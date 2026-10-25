@@ -21,6 +21,7 @@ npm test                      # 單元測試（node --test）
 ```
 
 成品：`output/weekly-<ISO週>.mp4`，每週資料與分鏡存於 `data/issues/<ISO週>/`。
+GitHub Actions 執行時會自動發布到 **Releases**（tag `weekly-<ISO週>`）：MP4 + SRT 字幕 + 自動生成的說明（文章清單、完整旁白稿），永久保存、可直接外連下載；本地可用 `npm run release -- --dry-run` 預覽。
 
 ## Pipeline
 
@@ -101,7 +102,7 @@ pip install edge-tts      # 或安裝 uv 後自動以 uvx 執行
 1. 將 repo 推到 GitHub
 2. 設定 Secrets（可選）：`LLM_API_KEY` / `LLM_BASE_URL` / `LLM_MODEL`、`MINIMAX_API_KEY`…（見 workflow 檔）
 3. Actions 頁手動 dispatch 一次驗證
-4. 之後每週自動執行：影片上傳為 artifact、每週資料自動 commit 回 main
+4. 之後每週自動執行：影片發布到 Releases（MP4+SRT+說明）、每週資料自動 commit 回 main
 
 本機排程可自行使用 cron / systemd timer：`0 9 * * 1 cd <repo> && npm run weekly`。
 
