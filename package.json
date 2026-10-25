@@ -1,0 +1,40 @@
+{
+  "name": "mobileai-weekly-video",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "每週一自動將 mobileai.net 過去一週新文章製作成週報精華影片（RSS → LLM 撰稿 → TTS 旁白 → Remotion 渲染）",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "weekly": "node scripts/run-weekly.mjs",
+    "fetch-feed": "node scripts/fetch-feed.mjs",
+    "summarize": "node scripts/summarize.mjs",
+    "tts": "node scripts/tts.mjs",
+    "gen-bgm": "node scripts/gen-bgm.mjs",
+    "storyboard": "node scripts/storyboard.mjs",
+    "render": "node scripts/render.mjs",
+    "qa": "node scripts/qa.mjs",
+    "studio": "remotion studio",
+    "test": "node --test 'test/*.test.ts'",
+    "gen:sfx": "node scripts/gen-sfx.mjs",
+    "assets": "node scripts/gen-sfx.mjs && node scripts/gen-bgm.mjs"
+  },
+  "dependencies": {
+    "@remotion/bundler": "^4.0.538",
+    "@remotion/cli": "^4.0.538",
+    "@remotion/renderer": "^4.0.538",
+    "cheerio": "^1.2.0",
+    "dotenv": "^18.0.9",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.538",
+    "rss-parser": "^3.13.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "@types/react": "^18.3.31",
+    "typescript": "^7.0.2"
+  }
+}

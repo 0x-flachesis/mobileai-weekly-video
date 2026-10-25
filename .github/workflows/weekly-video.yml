@@ -1,0 +1,97 @@
+name: weekly-video
+
+# 週一台北 09:00 = UTC 01:00
+on:
+  schedule:
+    - cron: "0 1 * * 1"
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "執行日（YYYY-MM-DD，預設今天）"
+        required: false
+        type: string
+      mock:
+        description: "mock 模式（不使用 LLM/TTS API，僅驗證管線）"
+        required: false
+        default: false
+        type: boolean
+      max:
+        description: "最多處理文章數"
+        required: false
+        type: number
+
+permissions:
+  contents: write
+
+concurrency:
+  group: weekly-video
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends ffmpeg curl
+          python3 -m pip install --user edge-tts
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Restore Remotion chromium cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules/.remotion
+          key: remotion-chromium-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+
+      - name: Run weekly pipeline
+        env:
+          LLM_PROVIDER: ${{ secrets.LLM_PROVIDER }}
+          LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_MODEL: ${{ secrets.LLM_MODEL }}
+          TTS_PROVIDER: ${{ secrets.TTS_PROVIDER }}
+          MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
+          MINIMAX_BASE_URL: ${{ secrets.MINIMAX_BASE_URL }}
+          MINIMAX_TTS_MODEL: ${{ secrets.MINIMAX_TTS_MODEL }}
+          MINIMAX_TTS_VOICE: ${{ secrets.MINIMAX_TTS_VOICE }}
+          TTS_API_KEY: ${{ secrets.TTS_API_KEY }}
+          TTS_BASE_URL: ${{ secrets.TTS_BASE_URL }}
+          TTS_MODEL: ${{ secrets.TTS_MODEL }}
+          TTS_VOICE: ${{ secrets.TTS_VOICE }}
+        run: |
+          ARGS=()
+          if [ -n "${{ inputs.date }}" ]; then ARGS+=("--date" "${{ inputs.date }}"); fi
+          if [ "${{ inputs.mock }}" = "true" ]; then ARGS+=("--mock"); fi
+          if [ -n "${{ inputs.max }}" ]; then ARGS+=("--max" "${{ inputs.max }}"); fi
+          node scripts/run-weekly.mjs "${ARGS[@]}"
+
+      - name: Upload video artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: weekly-video
+          if-no-files-found: ignore
+          path: |
+            output/
+            out/qa/
+            data/issues/
+
+      - name: Commit weekly data back to main
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          git diff --cached --quiet || (git commit -m "chore(data): 週報資料更新 $(date -u +%Y-%m-%d)" && git push)

@@ -1,0 +1,36 @@
+{
+  "week": "2026-W43",
+  "provider": "edge",
+  "items": [
+    {
+      "key": "intro",
+      "text": "歡迎收看 mobileai 週報，帶你看本週 10/18 – 10/25 的 3 篇科技新內容。",
+      "audio": "assets/2026-W43/audio/seg-00-intro.mp3",
+      "durationSec": 7.776
+    },
+    {
+      "key": "article-0",
+      "text": "之前跟大家介紹『DIPlay』這套讓 Android 車機、平板、手機變成 CarPlay 導航機的好物，就有 […] ",
+      "audio": "assets/2026-W43/audio/seg-01.mp3",
+      "durationSec": 8.808
+    },
+    {
+      "key": "article-1",
+      "text": "相信很多人現在手機都有安裝『紅果短劇』來追 AI 漫劇、真人短劇，只是目前官方尚未推出 Android TV […] 這",
+      "audio": "assets/2026-W43/audio/seg-02.mp3",
+      "durationSec": 10.8
+    },
+    {
+      "key": "article-2",
+      "text": "最近這幾天在 GitHub 有個專案『CleanYourTV』相當火熱！簡單說就是利用 AI 搭配這個開源的專 […] ",
+      "audio": "assets/2026-W43/audio/seg-03.mp3",
+      "durationSec": 9.312
+    },
+    {
+      "key": "outro",
+      "text": "完整教學與更多內容，都在 mobileai.net，我們下週見。",
+      "audio": "assets/2026-W43/audio/seg-04-outro.mp3",
+      "durationSec": 5.52
+    }
+  ]
+}

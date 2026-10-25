@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 2,
+  "week": "2026-W43",
+  "dateISO": "2026-10-19",
+  "dateLabel": "10/12 – 10/18",
+  "title": "mobileai 週報 2026-W43",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "totalFrames": 1450,
+  "bgm": { "src": "bgm/bgm-uplift-110.mp3", "volume": 0.34, "bpm": 110, "fadeOutFrames": 60 },
+  "segments": [
+    {
+      "kind": "intro",
+      "from": 0,
+      "duration": 110,
+      "title": "mobileai 週報",
+      "dateLabel": "10/12 – 10/18",
+      "week": "2026-W43",
+      "articleCount": 2,
+      "audioDurationSec": 0
+    },
+    {
+      "kind": "article",
+      "index": 0,
+      "from": 110,
+      "duration": 560,
+      "articleTitle": "示範文章標題一",
+      "headline": "範例短標第一筆",
+      "tag": "APP 教學",
+      "link": "https://mobileai.net/2026/10/15/example-1/",
+      "kenburns": { "fromScale": 1.06, "toScale": 1.15, "fromX": 0.2, "fromY": 0.1, "toX": 0.1, "toY": 0.05 },
+      "audioDurationSec": 0,
+      "captions": [
+        { "text": "這是示範字幕第一條", "from": 6, "duration": 80 },
+        { "text": "這是示範字幕第二條", "from": 86, "duration": 80 }
+      ]
+    },
+    {
+      "kind": "article",
+      "index": 1,
+      "from": 670,
+      "duration": 560,
+      "articleTitle": "示範文章標題二",
+      "headline": "範例短標第二筆",
+      "tag": "AI 工具",
+      "link": "https://mobileai.net/2026/10/17/example-2/",
+      "kenburns": { "fromScale": 1.16, "toScale": 1.05, "fromX": -0.2, "fromY": 0.1, "toX": -0.1, "toY": 0.05 },
+      "audioDurationSec": 0,
+      "captions": [
+        { "text": "示範段落第二篇", "from": 6, "duration": 80 }
+      ]
+    },
+    {
+      "kind": "outro",
+      "from": 1230,
+      "duration": 220,
+      "headlines": ["範例短標第一筆", "範例短標第二筆"],
+      "site": "mobileai.net",
+      "audioDurationSec": 0
+    }
+  ],
+  "sfx": [
+    { "name": "impact", "atFrame": 18, "volume": 0.5 },
+    { "name": "whoosh", "atFrame": 110, "volume": 0.4 },
+    { "name": "whoosh", "atFrame": 670, "volume": 0.25 },
+    { "name": "riser", "atFrame": 1185, "volume": 0.2 },
+    { "name": "impact", "atFrame": 1230, "volume": 0.4 }
+  ],
+  "seed": 123456789
+}

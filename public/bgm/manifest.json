@@ -1,0 +1,23 @@
+[
+  {
+    "name": "bgm-uplift-110",
+    "file": "bgm-uplift-110.mp3",
+    "bpm": 110,
+    "durationSec": 133,
+    "bytes": 1519601
+  },
+  {
+    "name": "bgm-focus-100",
+    "file": "bgm-focus-100.mp3",
+    "bpm": 100,
+    "durationSec": 132,
+    "bytes": 1302735
+  },
+  {
+    "name": "bgm-pulse-120",
+    "file": "bgm-pulse-120.mp3",
+    "bpm": 120,
+    "durationSec": 132,
+    "bytes": 1615813
+  }
+]

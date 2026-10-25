@@ -1,0 +1,60 @@
+{
+  "week": "2026-W43",
+  "dateISO": "2026-10-25",
+  "dateLabel": "10/18 – 10/25",
+  "windowStartISO": "2026-10-18T01:00:00.000Z",
+  "windowEndISO": "2026-10-25T01:00:00.000Z",
+  "feedUrl": "https://mobileai.net/feed/",
+  "articles": [
+    {
+      "guid": "https://mobileai.net/?p=123128",
+      "title": "讓 Android 車機、平板變 Android Auto  導航螢幕！DiAuto 免 Root APK 下載安裝與連線教學",
+      "link": "https://mobileai.net/2026/10/21/diauto/",
+      "publishedISO": "2026-10-21T05:37:51.000Z",
+      "author": "Leo",
+      "categories": [
+        "軟體・APP",
+        "Android Auto",
+        "Android 平板",
+        "Android 車機",
+        "DiAuto"
+      ],
+      "excerpt": "之前跟大家介紹『DIPlay』這套讓 Android 車機、平板、手機變成 CarPlay 導航機的好物，就有 […]\n這篇文章 讓 Android 車機、平板變 Android Auto  導航螢幕！DiAuto 免 Root APK 下載安裝與連線教學 最早出現於 傳說中的挨踢部門。",
+      "contentText": "首頁→科技→軟體・APP讓 Android 車機、平板變 Android Auto 導航螢幕！DiAuto 免 Root APK 下載安裝與連線教學 2026.10.21 · Leo · 約 2 分鐘 軟體・APP AI 摘要DiAuto 可讓 Android 車機、平板或手機充當 Android Auto 導航螢幕，安裝後依序設定語言並授予權限。文章所列系統需求為 Android 13 以上，示範使用 OPPO Pad Mini；作者測試的三款手機只能透過 USB 線連接，WiFi 連線方式仍待研究。這篇先看重點DiAuto 可從專案 GitHub 取得 APK，文章列出的版本是 0.3.12，系統需求依文內說明為 Android 13 以上。初次啟動會進入 Open Headunit 引導畫面，目前沒有繁體中文，需選「中文（中國）」才能顯示中文。初始化需接受條款並允許列出的權限，核對設定後按「完成」，接著進入等待連線畫面。文章記錄 vivo X300 Ultra、oppo Find N6 與 realme GT8 Pro 可用 USB 線連接，WiFi 連線則尚未成功。 之前跟大家介紹『DIPlay』這套讓 Android 車機、平板、手機變成 CarPlay 導航機的好物，就有網友詢問那有沒有把 Android 車機、平板、手機變成 Android 導航機的 APP 呢？其實之前有測試過幾個都有相容性問題與作者沒有更新的狀況，因此沒有跟大家介紹，後來有讀者回饋說 DiPlay 作者有開發另外一套 DiAuto 來讓您的 Android 車機、平板、手機變成 Android 導航機的 APP，測試了一下發現效果不錯，而且操作與設定已經相當簡單，今天就來跟大家分享一下如何安裝與設定囉… 文章目錄DiAuto APK 軟體下載DiAuto Android Auto 連線設定 常見問題 Q&AQ：如何設定 Android 車機、平板、手機開機預設啟動 DiAuto 並自動連接 Android Auto DiAuto APK 軟體下載 軟體名稱：DiAuto 官方網站：GitHub 版本：20261018 最新版本為 0.3.12 APK下載：Download APK ↓ 實測環境：OPPO Pad Mini 8吋柔光版 陸版 ColorOS 16.0.10 Android 16 Android 系統要求：目前官方說明文件提到需要 Android 13 以上 DiAuto Android Auto 連線設定 ▼安裝好初次使用的時會跳出歡迎使用 Open Headunit 介面，在這裡請把語言設定成『中文（中國）』，因為目前多國語系當中目前沒有繁體中文，要先在這設定日後才能顯示中文，設定好之後按『下一步』 ▼接著請勾選『我已閱讀並接受條款』並按『下一步』 ▼這時候會看到授權頁面，請打所有列出來的權限『允許』這樣才能讓 DiAuto 正常運作，設定好權限之好按『下一步』 ▼最後會看到剛剛設定的資訊，這時候按下『完成』即可 ▼接著就款出線這個等待連線的畫面囉！ 常見問題 Q&A Q：如何設定 Android 車機、平板、手機開機預設啟動 DiAuto 並自動連接 Android Auto 手邊的 vivo X300 Ultra 陸版 oriainOS、oppo Find N6 ColorOS 17、realme GT8 Pro 台版 都無法透過 WiFi 連線成功，只能透過 USB 線連線，還在研究該如何設定才能透過 WiFi 連線 分享文章f分享至 Facebook→LINE用 LINE 分享→LINE加入 LINE 頻道→TG加入 Telegram→上一篇讓 Android 車機、平板、手機變 Apple CarPlay 導航螢幕！機車重機玩家福音：DiPlay 安裝與連線教學下一篇讓電視也能看紅果短劇！『紅果 TV』第三方 APK 下載與安裝教學，Android TV、Google TV、小米、安博、小雲盒子皆適用 關於作者 Leo 自 2009 年持續分享 3C 科技、國際旅遊與影音內容。從產品實測到世界各地親身走訪，希望用真實體驗與長期累積的經驗，提供真正有用、值得信賴的科技與旅行資訊。 共 6,127 篇文章 查看作者文章 → 接著看 受夠智慧電視滿版廣告又卡頓嗎？CleanYourTV 手機版 APK 實測教學：免電腦、免 Root、免訂閱 AI，一鍵把 Android TV 變成極簡 Apple TV 風格！2026.10.24 讓電視也能看紅果短劇！『紅果 TV』第三方 APK 下載與安裝教學，Android TV、Google TV、小米、安博、小雲盒子皆適用2026.10.23 讓 Android 車機、平板、手機變 Apple CarPlay 導航螢幕！機車重機玩家福音：DiPlay 安裝與連線教學2026.10.09 留言（1） 歡迎留下你的看法或問題。 Winston表示: 2026/10/2122:27:32 pixel 10 pro + samsung a7 tab lite 第一次用有線, 用到一半發現自動變無線, 後來無線都正常了(wifi direct) 發表留言 發表留言電子郵件不會公開。留言顯示名稱 * 電子郵件地址 * 在瀏覽器中儲存顯示名稱、電子郵件地址及個人網站網址，以供下次發佈留言時使用。 Δ",
+      "imageUrl": "https://mobileai.net/wp-content/uploads/2026/10/img14.jpg",
+      "localImage": "assets/2026-W43/img/img-01.jpg"
+    },
+    {
+      "guid": "https://mobileai.net/?p=123141",
+      "title": "讓電視也能看紅果短劇！『紅果 TV』第三方 APK 下載與安裝教學，Android TV、Google TV、小米、安博、小雲盒子皆適用",
+      "link": "https://mobileai.net/2026/10/23/hongguo-tv-apk/",
+      "publishedISO": "2026-10-23T04:17:20.000Z",
+      "author": "Leo",
+      "categories": [
+        "軟體・APP",
+        "紅果短劇",
+        "紅果TV"
+      ],
+      "excerpt": "相信很多人現在手機都有安裝『紅果短劇』來追 AI 漫劇、真人短劇，只是目前官方尚未推出 Android TV  […]\n這篇文章 讓電視也能看紅果短劇！『紅果 TV』第三方 APK 下載與安裝教學，Android TV、Google TV、小米、安博、小雲盒子皆適用 最早出現於 傳說中的挨踢部門。",
+      "contentText": "首頁→科技→軟體・APP讓電視也能看紅果短劇！『紅果 TV』第三方 APK 下載與安裝教學，Android TV、Google TV、小米、安博、小雲盒子皆適用 2026.10.23 · Leo · 約 4 分鐘 軟體・APP AI 摘要紅果 TV 是讓 Android TV 裝置觀看紅果短劇的非官方軟體，安裝 APK 後可用遙控器瀏覽分類、榜單與劇集。遇到花屏、綠屏或影音不同步，可嘗試改用軟件解碼；平台機制變更也可能讓第三方程式失效。登入雖能同步播放紀錄與收藏，仍有帳號遭限制或封鎖的風險。這篇先看重點依教學以 LocalSend 傳送 APK，需在電腦與電視兩端安裝，並先依電視系統版本完成第三方安裝設定。榜單可依漫劇、真人、AI 與新劇分類找片，劇集頁面另有相關劇集功能，可尋找其他季的內容。播放時按遙控器的上方向鍵，可設定彈幕、播放速度與解碼；下方向鍵則用於選集與調整播放進度。Google TV Streamer 4K 的語音搜尋實測可用，先切換到注音鍵盤，再按住遙控器麥克風按鈕說話。 相信很多人現在手機都有安裝『紅果短劇』來追 AI 漫劇、真人短劇，只是目前官方尚未推出 Android TV 版本來滿足大家想在電視上追劇的夢想，現在有許多軟體開發者製作了許多第三方 APP 讓大家實現可以在電視上追紅果短劇需求，只是紅果官方也不斷地在修正機制導致很多第三方 APP 無法正常使用，畢竟只要作者沒有同步更新修正就會出現無法播放的問題，今天就來介紹這套作者算相當認真更新維護的『紅果 TV』，單一版本安裝設定都算是相當簡單，實測下來流暢性也相當不錯，想在電視上觀看紅果短劇的朋友別錯過這篇教學… 文章目錄Android TV 第三方 APK 安裝教學紅果 TV HGTV APK 軟體下載紅果 TV HGTV APK 安裝教學紅果 TV HGTV 操作介面常見問題Q：播放的時候碰到花屏、綠屏、影音不同步該怎麼辦？Q：可以登入帳號同步播放紀錄與收藏嗎？Q：紅果 TV 支援語音搜尋嗎？ Android TV 第三方 APK 安裝教學 首先您要先找到您的 Android 電視安裝 APK 的方式，可參考這篇用 Google TV Streamer 4K 的教學文章『Google TV Streamer 4K 第三方 APK 安裝方式』，並在您的電視上安裝好『LocalSend』這套軟體，您就可以透過家裡的無線網路來把 APK 傳輸到電視上並完成安裝囉！由於每台電視的 Android TV 版本與安裝方式都不太相同，因此請針對您家電視的版本來尋找對應設定方式，畢竟如果沒學會的話，就無法安裝第三方 APK 囉！以下補上 Chromecast with Google TV 第三方軟體的教學提供給大家參考。 2023 Chromecast with Google TV 第三方軟體 APK 安裝教學 只要記住最後一定要安裝『LocalSend』這套軟體就對了，因為這是免 USB 隨身碟、免雲端最方便的 APK 安裝檔案的傳輸方式。 紅果 TV HGTV APK 軟體下載 軟體名稱：紅果 TV 官方網站：GitHub 版本：20261022 最新版本為 1.2.2.2 APK下載： Android 系統要求：Android 4.4 以上，老舊 Android 盒也能安裝 實測環境：Google TV Streamer 4K 紅果 TV HGTV APK 安裝教學 首先把『紅果 TV APK』下載到電腦上，然後電腦端與電視端都要安裝『LocalSend』就可以把『紅果 TV APK』傳輸到電視中並安裝就會出現以下畫面： 此時會看到被 Google Play 安全防護給擋下，此時請用遙控器點選『更多詳情』 接著會展開內容，此時左下角會出現『仍要安裝』點擊即可 在這要注意千萬別按下『我知道了』因為按下去就會離開這個介面導致無法安裝喔！ ▼接著會出現此授權畫面，請按下『允許』就代表您已經完成紅果 TV 第三方 APK 安裝啦！ 紅果 TV HGTV 操作介面 ▼安裝完畢點擊即可進入紅果 TV 主介面，可以看到預設的熱播選項，此時可以透過遙控器切換 ▼也可透過分類介面來快速尋找您想觀看的內容 ▼當然還有榜單模式，讓您可以快速找到漫劇、真人、AI、新劇類別的內容。 ▼在劇集的頁面可以看到所有集數、也可以透過『相關劇集』功能找到其他『季』的內容 ▼當然也支援彈幕功能，如果覺得過度干擾觀看體驗也可以關閉此功能，不過有時彈幕的內容也相當歡樂就是。 ▼在播放介面當中按『上』就可以呼叫出選單來對彈幕、播放速度、解碼來進行設定，如果在播放介面按『下』就是選擇集數與快轉拉進度囉 常見問題 Q：播放的時候碰到花屏、綠屏、影音不同步該怎麼辦？ 請到設定頁面當中找到『視頻編碼』選項改成『軟件解碼』，應該就可以解決這個問題。 Q：可以登入帳號同步播放紀錄與收藏嗎？ 可以的！但這是非官方的軟體，您登入之後可能會被官方判定違反平台使用規則導致帳號被限制與封鎖的風險，因此不建議大家登入自己的帳號避免意外發生，如果真的想要登入帳號的話建議去開個全新帳號就算真的怎麼了也不會影響您自己本身的帳號囉！ Q：紅果 TV 支援語音搜尋嗎？ 實測是可以，請先把鍵盤切換到『注音鍵盤』，此時按著遙控器上面麥克風按鈕說話即可。 分享文章f分享至 Facebook→LINE用 LINE 分享→LINE加入 LINE 頻道→TG加入 Telegram→上一篇讓 Android 車機、平板變 Android Auto 導航螢幕！DiAuto 免 Root APK 下載安裝與連線教學下一篇受夠智慧電視滿版廣告又卡頓嗎？CleanYourTV 手機版 APK 實測教學：免電腦、免 Root、免訂閱 AI，一鍵把 Android TV 變成極簡 Apple TV 風格！ 關於作者 Leo 自 2009 年持續分享 3C 科技、國際旅遊與影音內容。從產品實測到世界各地親身走訪，希望用真實體驗與長期累積的經驗，提供真正有用、值得信賴的科技與旅行資訊。 共 6,127 篇文章 查看作者文章 → 接著看 受夠智慧電視滿版廣告又卡頓嗎？CleanYourTV 手機版 APK 實測教學：免電腦、免 Root、免訂閱 AI，一鍵把 Android TV 變成極簡 Apple TV 風格！2026.10.24 讓 Android 車機、平板變 Android Auto 導航螢幕！DiAuto 免 Root APK 下載安裝與連線教學2026.10.21 讓 Android 車機、平板、手機變 Apple CarPlay 導航螢幕！機車重機玩家福音：DiPlay 安裝與連線教學2026.10.09 留言 歡迎留下你的看法或問題。 目前還沒有留言，歡迎成為第一位回應者。 發表留言 發表留言電子郵件不會公開。留言顯示名稱 * 電子郵件地址 * 在瀏覽器中儲存顯示名稱、電子郵件地址及個人網站網址，以供下次發佈留言時使用。 Δ",
+      "imageUrl": "https://mobileai.net/wp-content/uploads/2026/10/img17.jpg",
+      "localImage": "assets/2026-W43/img/img-02.jpg"
+    },
+    {
+      "guid": "https://mobileai.net/?p=123156",
+      "title": "受夠智慧電視滿版廣告又卡頓嗎？CleanYourTV 手機版 APK 實測教學：免電腦、免 Root、免訂閱 AI，一鍵把 Android TV 變成極簡 Apple TV 風格！",
+      "link": "https://mobileai.net/2026/10/24/cleanyourtv/",
+      "publishedISO": "2026-10-24T10:36:06.000Z",
+      "author": "Leo",
+      "categories": [
+        "軟體・APP",
+        "Android TV",
+        "CleanYourTV"
+      ],
+      "excerpt": "最近這幾天在 GitHub 有個專案『CleanYourTV』相當火熱！簡單說就是利用 AI 搭配這個開源的專 […]\n這篇文章 受夠智慧電視滿版廣告又卡頓嗎？CleanYourTV 手機版 APK 實測教學：免電腦、免 Root、免訂閱 AI，一鍵把 Android TV 變成極簡 Apple TV 風格！ 最早出現於 傳說中的挨踢部門。",
+      "contentText": "首頁→科技→軟體・APP受夠智慧電視滿版廣告又卡頓嗎？CleanYourTV 手機版 APK 實測教學：免電腦、免 Root、免訂閱 AI，一鍵把 Android TV 變成極簡 Apple TV 風格！ 2026.10.24 · Leo · 約 8 分鐘 軟體・APP AI 摘要CleanYourTV 手機版 APK 可精簡 Android TV 的廣告與內建服務，並打造類似 Apple TV 的桌面，不必使用電腦或訂閱 AI。手機與電視須在同一個 Wi-Fi 網路，且電視需開啟 USB 偵錯並授權連線。軟體採停用而非刪除，不支援三星、LG 的電視系統。若要回復原桌面，須保留手機 App 與還原點。這篇先看重點CleanYourTV APK 要安裝在手機端，文章列出的 Android 系統需求為 9.0 以上。部分電視會在重開機後關閉 USB 偵錯；若重新連線失敗，應先檢查該選項是否仍開啟。桌面設定選單可由遙控器選取設定後長按 OK 或確認鍵開啟，用來微調桌面及應用程式順序。Manage 頁面的 Switched off 可單獨恢復應用程式，Undo everything 則會重新啟用先前停用的服務並切回原廠桌面。 最近這幾天在 GitHub 有個專案『CleanYourTV』相當火熱！簡單說就是利用 AI 搭配這個開源的專案讓 ChatGPT、Claude 來對您家中的 Android TV 智慧電視解決卡頓、廣告並給您一個類似 APPLE TV 的極簡風操作系統，相信很多朋友這幾天都在用已經訂閱的 AI 來幫家中電視優化，網路上也衍生出很多類似的軟體或是其他開源專案來做這件事情，就在這幾天 CleanYourTV 推出了手機端 APK，就算沒有訂閱 AI 也可以輕鬆利用您的手機來對電視進行優化，這對許多不熟悉 AI 操作的朋友來說可是一大福音，家裡不管是 Sony、小米、TCL 還是飛利浦的 Android TV 電視或電視盒，如果已經出現操作卡頓、或是一堆廣告的朋友那就別錯過今天這篇教學文章啦… 文章目錄Android TV USB 偵錯模式開啟教學CleanYourTV APK 下載安裝CleanYourTV APP 設定教學常見問題Q：CleanYourTV 桌面系統該如何設定？應用程式又該如何調整順序？Q：CleanYourTV 目前支援哪些電視機型？Q：如果用不習慣，該如何透過 CleanYourTV APP 還原回電視原本的桌面？ Android TV USB 偵錯模式開啟教學 ▼首先到您的 Android TV 當中進入到『設定』頁面當中，找到『系統』並點選『關於』來到此頁面，由於每台電視的設定頁面接不相同，因此請依據您的電視找到此頁面，然後透過遙控器選擇『Android TV 作業系統版本』，選擇好之後在上面連續按下遙控器的『確認』或是『OK』按鈕連按『7』次就會出現『開發人員設定已啟用』的訊息 ▼這時候您的 Android TV 設定頁面應該就會出現『開發人員選項』，此時請點選進入 ▼進入開發人員選項之後請開啟『USB 偵錯』 ▼此時會出現確認視窗，請選擇『確定』到這已經完成 Android TV 端的 USB 偵錯模式開啟，不過要注意有些電視只要重開機之後，就會把 USB 偵錯模式關閉，所以如果重開機之後發現無法使用，請到開發人員選項當中確認 USB 偵錯模式是否在開啟狀態，如果被關閉了請手動開啟即可。 CleanYourTV APK 下載安裝 軟體名稱：CleanYourTV 官方網站： 版本：20261024 最新版本為 0.3.3 APK下載： Android 系統要求：Android 9.0 以上 實測環境：Philips 70PUH8816 APK 下載之後請安裝到您的手機當中，因為等等我們要利用 APP 來對 Android TV 進行桌面系統的優化。 CleanYourTV APP 設定教學 ▼接著確認您的手機與電視在同一個 WiFi 環境下！這點相當重要因為 CleanYourTV 需要在同個網路環境下才能正常運作，確認在同個網路環境下之後打開剛剛安裝在手機的 CleanYourTV APP，此時請點擊『Start』接著就會出現此網路環境下的 Android TV 或是 Android 盒子，這時候請選擇您要優化的電視型號，並按下下方的『Use 70PUH8816/96』按鈕，Use 後方會帶出您選擇的電視名稱。 ▼接著電視端會跳出對話視窗 此時請勾選『一律允許透過這台電腦進行』 然後用遙控器按下『允許』 接著手機畫面應該會跳出『Connected』的訊息，也可以看到進度條在跑代表您的手機已經跟電視連線成功。 這時候手機會跳出 CleanYourTV 偵測到可關閉的項目，各位可以看到這台 Philips 70PUSH8816 電視有 14項可優化關閉，此時請按『Make it clean』按鈕 接著 CleanYourTV 就會開始針對剛剛偵測的項目進行優化 在優化的過程當中會同步看到您的電視畫面與APP 會出現同樣的畫面，代表 CleanYourTV 正在幫您優化桌面系統當中 此時 CleanYourTV 會詢問是否有看到電視出現與手機一樣的畫面？如果都出現一樣的畫面就按下『Yes I see it』 接著 CleanYourTV 會繼續優化 最後出現 Your TV is ready 代表手機已經幫電視優化完畢，此時請按下『Finish』 建議也把電視順手重開機，這樣才能確保重開機之後會進入 CleanYourTV 幫您製作的超簡潔系統桌面。 ▼手機端 CleanYourTV APP 在運作的過程當中，您的電視會出現以下這個畫面是正常的，因為手機上的 APP 正在透過 USB 偵錯模式來對電視進行優化。 ▼最後接著您就會看到電視開機之後出現類似 APPLE TV 的系統桌面，真心覺得這才是電視系統該有的操作邏輯。 常見問題 Q：CleanYourTV 桌面系統該如何設定？應用程式又該如何調整順序？ 利用電視遙控器選擇到『設定』之後，長按『OK』或是『確認』按鈕就會跳出選單，各位就可以按照自己的需求來進行微調囉！ Q：CleanYourTV 目前支援哪些電視機型？ 已知不支援三星、LG 電視的作業系統，目前 0.3.3 版其實增加了許多電視機種的偵測機制，而且還會對敏感權限進行保護避免造成電視無法正常使用，以下內容是利用 AI 整理出來的資訊提供給大家參考。 品牌 / 設備 支援程度 專屬注意事項與已知地雷 Sony (BRAVIA 系列) 完整支援 （已測試 26 款，涵蓋 Android TV 7.0 至最新 Google TV 14） 切勿停用負責控制訊號源與數位電視調諧器的底層套件（手機版 APK v0.2.0+ 已預設強制保護），否則會導致 HDMI 切換選單失效。 小米 / Redmi （台灣國際版） 完整支援 （包含小米電視與 Mi Box S 等盒子） 部分小米盒子（如 Mi Box S）在開啟「USB 偵錯」期間，實體 USB 孔會暫時斷電（外接隨身碟或喇叭會失效），等清理完畢並關閉 USB 偵錯後就會恢復供電。 小米 / R",
+      "imageUrl": "https://mobileai.net/wp-content/uploads/2026/10/img14-1.jpg",
+      "localImage": "assets/2026-W43/img/img-03.jpg"
+    }
+  ]
+}

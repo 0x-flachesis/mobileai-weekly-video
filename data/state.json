@@ -1,0 +1,15 @@
+{
+  "processedGuids": [
+    "https://mobileai.net/?p=123128",
+    "https://mobileai.net/?p=123141",
+    "https://mobileai.net/?p=123156"
+  ],
+  "updatedAt": "2026-10-25T02:21:59.841Z",
+  "weeks": [
+    {
+      "week": "2026-W43",
+      "articles": 3,
+      "video": "output/weekly-2026-W43.mp4"
+    }
+  ]
+}
