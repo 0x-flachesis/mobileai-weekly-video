@@ -56,6 +56,8 @@ export class OpenAICompatibleLLM implements LLMProvider {
   readonly name = "openai-compatible";
   cfg: LLMOpenAICompatConfig;
   private resolvedModels: string[] | null = null;
+  /** 跨所有 chat 呼叫的嘗試計數：重試時輪換起始模型（client-side fallback） */
+  private chatAttempt = 0;
 
   constructor(cfg: LLMOpenAICompatConfig) {
     this.cfg = cfg;
@@ -94,10 +96,18 @@ export class OpenAICompatibleLLM implements LLMProvider {
   /**
    * 多模型時改送 `models` 陣列（OpenRouter 依序 fallback，
    * 例如免費模型限流時自動切下一個）；單模型維持 `model` 欄位。
+   * attempt 用於重試時輪換起始模型（OpenRouter 只對錯誤回應換模型，
+   * 逾時不會——某個模型持續慢時，輪換讓下一次重試從別的模型開始）。
    */
-  private async requestBody(messages: ChatMessage[]): Promise<Record<string, unknown>> {
+  private async requestBody(messages: ChatMessage[], attempt = 0): Promise<Record<string, unknown>> {
     const models = await this.resolveModels();
-    const modelSpec = models.length > 1 ? { models } : { model: models[0] ?? this.cfg.model };
+    let modelSpec: Record<string, unknown>;
+    if (models.length > 1) {
+      const rotated = [...models.slice(attempt % models.length), ...models.slice(0, attempt % models.length)];
+      modelSpec = { models: rotated };
+    } else {
+      modelSpec = { model: models[0] ?? this.cfg.model };
+    }
     return {
       ...modelSpec,
       temperature: this.cfg.temperature,
@@ -111,6 +121,10 @@ export class OpenAICompatibleLLM implements LLMProvider {
     return withRetry(
       async () => {
         let res: Response;
+        let json: {
+          model?: string;
+          choices?: { message?: { content?: string } }[];
+        };
         try {
           res = await fetch(url, {
             method: "POST",
@@ -118,25 +132,24 @@ export class OpenAICompatibleLLM implements LLMProvider {
               "Content-Type": "application/json",
               Authorization: `Bearer ${this.cfg.apiKey}`,
             },
-            body: JSON.stringify(await this.requestBody(messages)),
+            body: JSON.stringify(await this.requestBody(messages, this.chatAttempt++)),
             signal: AbortSignal.timeout(180_000), // 免費模型常見 1-3 分鐘
           });
+          if (!res.ok) {
+            const body = await res.text().catch(() => "");
+            const retryable = res.status >= 500 || res.status === 429 || res.status === 408;
+            throw new ProviderError(
+              `LLM ${this.cfg.model} HTTP ${res.status}：${body.slice(0, 200)}`,
+              { retryable },
+            );
+          }
+          // 注意：res.json()（body 下載）也在 AbortSignal 範圍內，逾時同樣要算可重試
+          json = (await res.json()) as typeof json;
         } catch (err) {
+          if (err instanceof ProviderError) throw err;
           // AbortError/TimeoutError（逾時）與網路層錯誤皆可重試
           throw new ProviderError(`LLM 請求逾時或網路錯誤：${errMsg(err)}`, { retryable: true });
         }
-        if (!res.ok) {
-          const body = await res.text().catch(() => "");
-          const retryable = res.status >= 500 || res.status === 429 || res.status === 408;
-          throw new ProviderError(
-            `LLM ${this.cfg.model} HTTP ${res.status}：${body.slice(0, 200)}`,
-            { retryable },
-          );
-        }
-        const json = (await res.json()) as {
-          model?: string;
-          choices?: { message?: { content?: string } }[];
-        };
         const content = json.choices?.[0]?.message?.content;
         if (!content) throw new ProviderError("LLM 回應缺少 choices[0].message.content", { retryable: true });
         // OpenRouter models 陣列路由時，記錄實際使用的模型
