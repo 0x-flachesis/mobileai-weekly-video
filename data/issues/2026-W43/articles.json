@@ -20,35 +20,9 @@
         "DiAuto"
       ],
       "excerpt": "之前跟大家介紹『DIPlay』這套讓 Android 車機、平板、手機變成 CarPlay 導航機的好物，就有 […]\n這篇文章 讓 Android 車機、平板變 Android Auto  導航螢幕！DiAuto 免 Root APK 下載安裝與連線教學 最早出現於 傳說中的挨踢部門。",
-      "contentText": ""
-    },
-    {
-      "guid": "https://mobileai.net/?p=123141",
-      "title": "讓電視也能看紅果短劇！『紅果 TV』第三方 APK 下載與安裝教學，Android TV、Google TV、小米、安博、小雲盒子皆適用",
-      "link": "https://mobileai.net/2026/10/23/hongguo-tv-apk/",
-      "publishedISO": "2026-10-23T04:17:20.000Z",
-      "author": "Leo",
-      "categories": [
-        "軟體・APP",
-        "紅果短劇",
-        "紅果TV"
-      ],
-      "excerpt": "相信很多人現在手機都有安裝『紅果短劇』來追 AI 漫劇、真人短劇，只是目前官方尚未推出 Android TV  […]\n這篇文章 讓電視也能看紅果短劇！『紅果 TV』第三方 APK 下載與安裝教學，Android TV、Google TV、小米、安博、小雲盒子皆適用 最早出現於 傳說中的挨踢部門。",
-      "contentText": ""
-    },
-    {
-      "guid": "https://mobileai.net/?p=123156",
-      "title": "受夠智慧電視滿版廣告又卡頓嗎？CleanYourTV 手機版 APK 實測教學：免電腦、免 Root、免訂閱 AI，一鍵把 Android TV 變成極簡 Apple TV 風格！",
-      "link": "https://mobileai.net/2026/10/24/cleanyourtv/",
-      "publishedISO": "2026-10-24T10:36:06.000Z",
-      "author": "Leo",
-      "categories": [
-        "軟體・APP",
-        "Android TV",
-        "CleanYourTV"
-      ],
-      "excerpt": "最近這幾天在 GitHub 有個專案『CleanYourTV』相當火熱！簡單說就是利用 AI 搭配這個開源的專 […]\n這篇文章 受夠智慧電視滿版廣告又卡頓嗎？CleanYourTV 手機版 APK 實測教學：免電腦、免 Root、免訂閱 AI，一鍵把 Android TV 變成極簡 Apple TV 風格！ 最早出現於 傳說中的挨踢部門。",
-      "contentText": ""
+      "contentText": "之前跟大家介紹『DIPlay』這套讓 Android 車機、平板、手機變成 CarPlay 導航機的好物，就有網友詢問那有沒有把 Android 車機、平板、手機變成 Android 導航機的 APP 呢？其實之前有測試過幾個都有相容性問題與作者沒有更新的狀況，因此沒有跟大家介紹，後來有讀者回饋說 DiPlay 作者有開發另外一套 DiAuto 來讓您的 Android 車機、平板、手機變成 Android 導航機的 APP，測試了一下發現效果不錯，而且操作與設定已經相當簡單，今天就來跟大家分享一下如何安裝與設定囉… DiAuto APK 軟體下載 軟體名稱：DiAuto 官方網站：GitHub 版本：20261018 最新版本為 0.3.12 APK下載：Download APK ↓ 實測環境：OPPO Pad Mini 8吋柔光版 陸版 ColorOS 16.0.10 Android 16 Android 系統要求：目前官方說明文件提到需要 Android 13 以上 DiAuto Android Auto 連線設定 ▼安裝好初次使用的時會跳出歡迎使用 Open Headunit 介面，在這裡請把語言設定成『中文（中國）』，因為目前多國語系當中目前沒有繁體中文，要先在這設定日後才能顯示中文，設定好之後按『下一步』 ▼接著請勾選『我已閱讀並接受條款』並按『下一步』 ▼這時候會看到授權頁面，請打所有列出來的權限『允許』這樣才能讓 DiAuto 正常運作，設定好權限之好按『下一步』 ▼最後會看到剛剛設定的資訊，這時候按下『完成』即可 ▼接著就款出線這個等待連線的畫面囉！ 常見問題 Q&A Q：如何設定 Android 車機、平板、手機開機預設啟動 DiAuto 並自動連接 Android Auto 手邊的 vivo X300 Ultra 陸版 oriainOS、oppo Find N6 ColorOS 17、realme GT8 Pro 台版 都無法透過 WiFi 連線成功，只能透過 USB 線連線，還在研究該如何設定才能透過 WiFi 連線 Q：如何設定 Android 車機、平板、手機開機預設啟動 DiAuto 並自動連接 Android Auto 手邊的 vivo X300 Ultra 陸版 oriainOS、oppo Find N6 ColorOS 17、realme GT8 Pro 台版 都無法透過 WiFi 連線成功，只能透過 USB 線連線，還在研究該如何設定才能透過 WiFi 連線",
+      "imageUrl": "https://mobileai.net/wp-content/uploads/2026/10/img14.jpg",
+      "localImage": "assets/2026-W43/img/img-01.jpg"
     }
   ]
 }

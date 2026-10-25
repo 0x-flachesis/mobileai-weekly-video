@@ -16,56 +16,110 @@ import { errMsg, withRetry } from "./lib/util.ts";
 
 const pexec = promisify(execFile);
 
-/**
- * HTTP 抓取：優先走 curl（mobileai.net 的 Cloudflare 會擋 node fetch 的 TLS 指紋），
- * curl 不可用時退回 node fetch。帶完整瀏覽器 headers 提升 datacenter IP 過 Cloudflare 的機率。
- */
-async function httpGet(url, userAgent, opts = {}) {
-  const headers = [
-    "-A",
-    userAgent,
-    "-H",
-    "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,application/json;q=0.8,*/*;q=0.7",
-    "-H",
-    "Accept-Language: zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7",
-    "-H",
-    "Sec-Fetch-Dest: document",
-    "-H",
-    "Sec-Fetch-Mode: navigate",
-    "-H",
-    "Sec-Fetch-Site: none",
-    "-H",
-    "Sec-Fetch-User: ?1",
-    "-H",
-    "Upgrade-Insecure-Requests: 1",
-  ];
+const BROWSER_HEADERS = {
+  "User-Agent": "",
+  Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,application/json;q=0.8,*/*;q=0.7",
+  "Accept-Language": "zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7",
+  "Sec-Fetch-Dest": "document",
+  "Sec-Fetch-Mode": "navigate",
+  "Sec-Fetch-Site": "none",
+  "Upgrade-Insecure-Requests": "1",
+};
+
+/** python3 urllib 抓取（其 TLS 指紋可通過 mobileai.net 的 Cloudflare；
+ *  Ubuntu curl(OpenSSL 3.0) 與 node fetch(undici) 的指紋都會被挑戰）。 */
+async function httpGetPython(url, userAgent, outFile) {
+  const script = `
+import sys, urllib.request, urllib.error
+url, ua, out = sys.argv[1], sys.argv[2], (sys.argv[3] if len(sys.argv) > 3 else None)
+req = urllib.request.Request(url, headers={
+    "User-Agent": ua,
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,application/json;q=0.8,*/*;q=0.7",
+    "Accept-Language": "zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7",
+    "Upgrade-Insecure-Requests": "1",
+})
+try:
+    r = urllib.request.urlopen(req, timeout=30)
+    data = r.read()
+    if out:
+        open(out, "wb").write(data)
+    else:
+        sys.stdout.buffer.write(data)
+    print("\\nPYHTTP_STATUS", r.status)
+except urllib.error.HTTPError as e:
+    print("\\nPYHTTP_STATUS", e.code, file=sys.stderr)
+    sys.exit(2)
+`;
+  const args = ["-c", script, url, userAgent];
+  if (outFile) args.push(outFile);
   try {
-    const args = ["-sSL", "--compressed", "--max-time", "30", ...headers, "-w", "\n%{http_code}"];
-    if (opts.outFile) args.push("-o", opts.outFile);
-    const { stdout } = await pexec("curl", [...args, url], { maxBuffer: 20 * 1024 * 1024 });
-    const body = opts.outFile ? "" : stdout.replace(/\n(\d{3})$/, "");
-    const code = Number.parseInt((stdout.match(/\n(\d{3})$/) || [])[1] ?? "0", 10);
+    const { stdout } = await pexec("python3", args, { maxBuffer: 20 * 1024 * 1024 });
+    const m = stdout.match(/\nPYHTTP_STATUS (\d{3})/);
+    const code = Number.parseInt(m?.[1] ?? "0", 10);
     if (code >= 400) {
       throw Object.assign(new Error(`HTTP ${code} ${url}`), { retryable: code >= 500 || code === 429 });
     }
-    return body;
+    return outFile ? "" : stdout.replace(/\nPYHTTP_STATUS \d{3}\n?$/, "");
   } catch (err) {
-    if (err.code === "ENOENT") {
-      // 無 curl：退回 node fetch
-      const res = await fetch(url, { headers: { "User-Agent": userAgent }, signal: AbortSignal.timeout(30_000) });
-      if (!res.ok) {
-        throw Object.assign(new Error(`HTTP ${res.status} ${url}`), {
-          retryable: res.status >= 500 || res.status === 429,
-        });
-      }
-      if (opts.outFile) {
-        await writeFile(opts.outFile, Buffer.from(await res.arrayBuffer()));
-        return "";
-      }
-      return await res.text();
+    const stderr = err.stderr ? String(err.stderr) : "";
+    const statusMatch = stderr.match(/PYHTTP_STATUS (\d{3})/);
+    if (statusMatch) {
+      const code = Number.parseInt(statusMatch[1], 10);
+      throw Object.assign(new Error(`HTTP ${code} ${url}`), { retryable: code >= 500 || code === 429 });
     }
-    throw err;
+    // python3 不存在或腳本異常 → 退回 curl
+    throw Object.assign(new Error(`python http 不可用：${errMsg(err)}`), { noPython: true });
   }
+}
+
+/** curl 抓取（headers 同上）。 */
+async function httpGetCurl(url, userAgent, outFile) {
+  const headers = ["-A", userAgent];
+  for (const [k, v] of Object.entries(BROWSER_HEADERS)) {
+    if (!v) continue;
+    headers.push("-H", `${k}: ${v}`);
+  }
+  const args = ["-sSL", "--compressed", "--max-time", "30", ...headers, "-w", "\n%{http_code}"];
+  if (outFile) args.push("-o", outFile);
+  const { stdout } = await pexec("curl", [...args, url], { maxBuffer: 20 * 1024 * 1024 });
+  const body = outFile ? "" : stdout.replace(/\n(\d{3})$/, "");
+  const code = Number.parseInt((stdout.match(/\n(\d{3})$/) || [])[1] ?? "0", 10);
+  if (code >= 400) {
+    throw Object.assign(new Error(`HTTP ${code} ${url}`), { retryable: code >= 500 || code === 429 });
+  }
+  return body;
+}
+
+/**
+ * HTTP 抓取：python3 urllib → curl → node fetch 依序嘗試。
+ * mobileai.net 的 Cloudflare 以 TLS 指紋挑戰：Ubuntu curl 與 undici 會被擋、
+ * python urllib 實測可過（家用 IP 與 runner 容器皆 200）。
+ */
+async function httpGet(url, userAgent, opts = {}) {
+  // 1) python3 urllib（TLS 指紋可過 Cloudflare；HTTP 層錯誤直接拋出交給重試）
+  try {
+    return await httpGetPython(url, userAgent, opts.outFile);
+  } catch (err) {
+    if (!err?.noPython) throw err;
+  }
+  // 2) curl（python 不可用時）
+  try {
+    return await httpGetCurl(url, userAgent, opts.outFile);
+  } catch (err) {
+    if (err.code !== "ENOENT") throw err;
+  }
+  // 3) node fetch
+  const res = await fetch(url, { headers: { "User-Agent": userAgent }, signal: AbortSignal.timeout(30_000) });
+  if (!res.ok) {
+    throw Object.assign(new Error(`HTTP ${res.status} ${url}`), {
+      retryable: res.status >= 500 || res.status === 429,
+    });
+  }
+  if (opts.outFile) {
+    await writeFile(opts.outFile, Buffer.from(await res.arrayBuffer()));
+    return "";
+  }
+  return await res.text();
 }
 
 /** 網路抓取 + 指數退避重試。 */
