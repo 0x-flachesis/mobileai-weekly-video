@@ -7,7 +7,7 @@
   "fps": 30,
   "width": 1920,
   "height": 1080,
-  "totalFrames": 2862,
+  "totalFrames": 1710,
   "bgm": {
     "src": "bgm/bgm-focus-100.mp3",
     "volume": 0.34,
@@ -18,24 +18,23 @@
     {
       "kind": "intro",
       "from": 0,
-      "duration": 216,
+      "duration": 360,
       "title": "mobileai 週報",
       "dateLabel": "10/18 – 10/25",
       "week": "2026-W43",
       "articleCount": 3,
       "audio": "assets/2026-W43/audio/seg-00-intro.mp3",
-      "audioDurationSec": 5.793406
+      "audioDurationSec": 10.692
     },
     {
       "kind": "article",
       "index": 0,
-      "from": 216,
-      "duration": 756,
+      "from": 360,
+      "duration": 360,
       "articleTitle": "讓 Android 車機、平板變 Android Auto  導航螢幕！DiAuto 免 Root APK 下載安裝與連線教學",
-      "headline": "DiAuto 平板變車機",
-      "tag": "APP教學",
+      "headline": "本週焦點 1",
+      "tag": "測試分類",
       "link": "https://mobileai.net/2026/10/21/diauto/",
-      "image": "assets/2026-W43/img/img-01.jpg",
       "kenburns": {
         "fromScale": 1.1435765862464904,
         "toScale": 1.0677124186698348,
@@ -45,70 +44,34 @@
         "toY": -0.3761812088638544
       },
       "audio": "assets/2026-W43/audio/seg-01.mp3",
-      "audioDurationSec": 24.028188,
+      "audioDurationSec": 10.44,
       "captions": [
         {
-          "text": "Android 車機與平板常缺原",
+          "text": "這是第 1 篇文章的測試旁白",
           "from": 6,
-          "duration": 96
+          "duration": 107
         },
         {
-          "text": "生 Android Auto",
-          "from": 102,
-          "duration": 84
+          "text": "用來驗證管線的語音時長估算與字幕",
+          "from": 113,
+          "duration": 123
         },
         {
-          "text": "DiAuto 可免 Root 將",
-          "from": 186,
-          "duration": 96
-        },
-        {
-          "text": "裝置化身導航螢幕",
-          "from": 282,
-          "duration": 48
-        },
-        {
-          "text": "從 GitHub 下載 APK",
-          "from": 330,
-          "duration": 90
-        },
-        {
-          "text": "安裝後選擇簡體中文",
-          "from": 420,
-          "duration": 54
-        },
-        {
-          "text": "同意權限並完成設定",
-          "from": 474,
-          "duration": 54
-        },
-        {
-          "text": "再以 USB 連線即可啟動",
-          "from": 528,
-          "duration": 78
-        },
-        {
-          "text": "部分機型的 Wi-Fi 連線仍可",
-          "from": 606,
-          "duration": 96
-        },
-        {
-          "text": "能失敗",
-          "from": 702,
-          "duration": 18
+          "text": "切分邏輯是否正常運作",
+          "from": 236,
+          "duration": 77
         }
       ]
     },
     {
       "kind": "article",
       "index": 1,
-      "from": 972,
-      "duration": 810,
+      "from": 720,
+      "duration": 360,
       "articleTitle": "讓電視也能看紅果短劇！『紅果 TV』第三方 APK 下載與安裝教學，Android TV、Google TV、小米、安博、小雲盒子皆適用",
-      "headline": "紅果短劇搬上電視",
-      "tag": "追劇教學",
+      "headline": "本週焦點 2",
+      "tag": "測試分類",
       "link": "https://mobileai.net/2026/10/23/hongguo-tv-apk/",
-      "image": "assets/2026-W43/img/img-02.jpg",
       "kenburns": {
         "fromScale": 1.0614076919900253,
         "toScale": 1.1666439066827297,
@@ -118,75 +81,34 @@
         "toY": 0.17234070748090746
       },
       "audio": "assets/2026-W43/audio/seg-02.mp3",
-      "audioDurationSec": 26.136,
+      "audioDurationSec": 10.44,
       "captions": [
         {
-          "text": "手機能看紅果短劇",
+          "text": "這是第 2 篇文章的測試旁白",
           "from": 6,
-          "duration": 54
+          "duration": 107
         },
         {
-          "text": "Android TV 卻沒有官方",
-          "from": 60,
-          "duration": 108
+          "text": "用來驗證管線的語音時長估算與字幕",
+          "from": 113,
+          "duration": 123
         },
         {
-          "text": "版本",
-          "from": 168,
-          "duration": 14
-        },
-        {
-          "text": "紅果 TV 是持續維護的第三方 ",
-          "from": 182,
-          "duration": 108
-        },
-        {
-          "text": "APK",
-          "from": 290,
-          "duration": 20
-        },
-        {
-          "text": "支援多種電視與盒子",
-          "from": 310,
-          "duration": 61
-        },
-        {
-          "text": "電腦和電視安裝 LocalSen",
-          "from": 371,
-          "duration": 108
-        },
-        {
-          "text": "d 傳檔後",
-          "from": 479,
-          "duration": 34
-        },
-        {
-          "text": "完成安裝與授權即可操作",
-          "from": 513,
-          "duration": 74
-        },
-        {
-          "text": "遇花屏或不同步可改用軟體解碼",
-          "from": 587,
-          "duration": 95
-        },
-        {
-          "text": "但非官方版登入可能使帳號遭限制",
-          "from": 682,
-          "duration": 101
+          "text": "切分邏輯是否正常運作",
+          "from": 236,
+          "duration": 77
         }
       ]
     },
     {
       "kind": "article",
       "index": 2,
-      "from": 1782,
-      "duration": 846,
+      "from": 1080,
+      "duration": 360,
       "articleTitle": "受夠智慧電視滿版廣告又卡頓嗎？CleanYourTV 手機版 APK 實測教學：免電腦、免 Root、免訂閱 AI，一鍵把 Android TV 變成極簡 Apple TV 風格！",
-      "headline": "手機一鍵極簡化電視",
-      "tag": "電視優化",
+      "headline": "本週焦點 3",
+      "tag": "測試分類",
       "link": "https://mobileai.net/2026/10/24/cleanyourtv/",
-      "image": "assets/2026-W43/img/img-03.jpg",
       "kenburns": {
         "fromScale": 1.0473118911846542,
         "toScale": 1.1451955861598253,
@@ -196,82 +118,37 @@
         "toY": 0.29423501297831534
       },
       "audio": "assets/2026-W43/audio/seg-03.mp3",
-      "audioDurationSec": 26.856,
+      "audioDurationSec": 10.44,
       "captions": [
         {
-          "text": "智慧電視廣告多又卡頓",
+          "text": "這是第 3 篇文章的測試旁白",
           "from": 6,
-          "duration": 69
+          "duration": 107
         },
         {
-          "text": "CleanYourTV 可透過 ",
-          "from": 75,
-          "duration": 110
+          "text": "用來驗證管線的語音時長估算與字幕",
+          "from": 113,
+          "duration": 123
         },
         {
-          "text": "USB 偵測關閉項目",
-          "from": 185,
-          "duration": 69
-        },
-        {
-          "text": "改成 Apple TV 風格桌面",
-          "from": 254,
-          "duration": 110
-        },
-        {
-          "text": "在版本頁連按確認鍵七次",
-          "from": 364,
-          "duration": 76
-        },
-        {
-          "text": "開啟 USB 偵錯",
-          "from": 440,
-          "duration": 62
-        },
-        {
-          "text": "手機與電視同連 Wi-Fi",
-          "from": 502,
-          "duration": 90
-        },
-        {
-          "text": "安裝 APK",
-          "from": 592,
-          "duration": 41
-        },
-        {
-          "text": "授權連線後執行清理",
-          "from": 633,
-          "duration": 62
-        },
-        {
-          "text": "完成後重啟即可",
-          "from": 695,
-          "duration": 48
-        },
-        {
-          "text": "三星",
-          "from": 743,
-          "duration": 14
-        },
-        {
-          "text": "LG 暫不支援",
-          "from": 757,
-          "duration": 48
+          "text": "切分邏輯是否正常運作",
+          "from": 236,
+          "duration": 77
         }
       ]
     },
     {
       "kind": "outro",
-      "from": 2628,
-      "duration": 234,
+      "from": 1440,
+      "duration": 270,
       "headlines": [
-        "DiAuto 平板變車機",
-        "紅果短劇搬上電視",
-        "手機一鍵極簡化電視"
+        "本週焦點 1",
+        "本週焦點 2",
+        "本週焦點 3"
       ],
       "site": "mobileai.net",
       "audio": "assets/2026-W43/audio/seg-04-outro.mp3",
-      "audioDurationSec": 6.652531
+      "audioDurationSec": 7.848
     }
   ],
   "sfx": [
@@ -282,27 +159,27 @@
     },
     {
       "name": "whoosh",
-      "atFrame": 216,
+      "atFrame": 360,
       "volume": 0.4
     },
     {
       "name": "whoosh",
-      "atFrame": 972,
+      "atFrame": 720,
       "volume": 0.25
     },
     {
       "name": "whoosh",
-      "atFrame": 1782,
+      "atFrame": 1080,
       "volume": 0.4
     },
     {
       "name": "riser",
-      "atFrame": 2583,
+      "atFrame": 1395,
       "volume": 0.2
     },
     {
       "name": "impact",
-      "atFrame": 2628,
+      "atFrame": 1440,
       "volume": 0.4
     }
   ],

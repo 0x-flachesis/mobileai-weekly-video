@@ -1,7 +1,7 @@
 {
   "week": "2026-W43",
   "video": "output/weekly-2026-W43.mp4",
-  "durationSec": 95.403,
+  "durationSec": 57.003,
   "fps": 30,
   "checks": [
     {
@@ -32,30 +32,30 @@
     {
       "name": "duration-min",
       "pass": true,
-      "detail": "95.4s"
+      "detail": "57.0s"
     },
     {
       "name": "duration-max",
       "pass": true,
-      "detail": "95.4s"
+      "detail": "57.0s"
     },
     {
       "name": "duration-matches-storyboard",
       "pass": true,
-      "detail": "mp4 95.4s vs storyboard 95.4s"
+      "detail": "mp4 57.0s vs storyboard 57.0s"
     }
   ],
   "failedCount": 0,
   "qaFrames": [
-    "out/qa/2026-W43/frame-00-0043.png",
-    "out/qa/2026-W43/frame-00-0151.png",
-    "out/qa/2026-W43/frame-01-0367.png",
-    "out/qa/2026-W43/frame-01-0745.png",
-    "out/qa/2026-W43/frame-02-1134.png",
-    "out/qa/2026-W43/frame-02-1539.png",
-    "out/qa/2026-W43/frame-03-1951.png",
-    "out/qa/2026-W43/frame-03-2374.png",
-    "out/qa/2026-W43/frame-04-2674.png",
-    "out/qa/2026-W43/frame-04-2791.png"
+    "out/qa/2026-W43/frame-00-0072.png",
+    "out/qa/2026-W43/frame-00-0251.png",
+    "out/qa/2026-W43/frame-01-0432.png",
+    "out/qa/2026-W43/frame-01-0611.png",
+    "out/qa/2026-W43/frame-02-0792.png",
+    "out/qa/2026-W43/frame-02-0971.png",
+    "out/qa/2026-W43/frame-03-1152.png",
+    "out/qa/2026-W43/frame-03-1331.png",
+    "out/qa/2026-W43/frame-04-1494.png",
+    "out/qa/2026-W43/frame-04-1629.png"
   ]
 }

@@ -1,19 +1,18 @@
 {
   "week": "2026-W43",
   "dateLabel": "10/18 – 10/25",
-  "intro": "mobileai 週報本週精選車機、電視三款 APK 教學！",
-  "outro": "完整文章請到 mobileai.net 閱讀，並訂閱追蹤每週更新！",
+  "intro": "測試開場白：mobileai 週報 10/18 – 10/25，本週共有 3 篇文章。",
+  "outro": "測試結尾：完整內容請上 mobileai.net，我們下週見。",
   "articles": [
     {
       "guid": "https://mobileai.net/?p=123128",
       "title": "讓 Android 車機、平板變 Android Auto  導航螢幕！DiAuto 免 Root APK 下載安裝與連線教學",
       "link": "https://mobileai.net/2026/10/21/diauto/",
       "publishedISO": "2026-10-21T05:37:51.000Z",
-      "localImage": "assets/2026-W43/img/img-01.jpg",
       "copy": {
-        "shortHeadline": "DiAuto 平板變車機",
-        "narration": "Android 車機與平板常缺原生 Android Auto，DiAuto 可免 Root 將裝置化身導航螢幕。從 GitHub 下載 APK，安裝後選擇簡體中文、同意權限並完成設定，再以 USB 連線即可啟動；部分機型的 Wi-Fi 連線仍可能失敗。",
-        "tag": "APP教學"
+        "shortHeadline": "本週焦點 1",
+        "narration": "這是第 1 篇文章的測試旁白，用來驗證管線的語音時長估算與字幕切分邏輯是否正常運作。",
+        "tag": "測試分類"
       }
     },
     {
@@ -21,11 +20,10 @@
       "title": "讓電視也能看紅果短劇！『紅果 TV』第三方 APK 下載與安裝教學，Android TV、Google TV、小米、安博、小雲盒子皆適用",
       "link": "https://mobileai.net/2026/10/23/hongguo-tv-apk/",
       "publishedISO": "2026-10-23T04:17:20.000Z",
-      "localImage": "assets/2026-W43/img/img-02.jpg",
       "copy": {
-        "shortHeadline": "紅果短劇搬上電視",
-        "narration": "手機能看紅果短劇，Android TV 卻沒有官方版本。紅果 TV 是持續維護的第三方 APK，支援多種電視與盒子；電腦和電視安裝 LocalSend 傳檔後，完成安裝與授權即可操作。遇花屏或不同步可改用軟體解碼，但非官方版登入可能使帳號遭限制。",
-        "tag": "追劇教學"
+        "shortHeadline": "本週焦點 2",
+        "narration": "這是第 2 篇文章的測試旁白，用來驗證管線的語音時長估算與字幕切分邏輯是否正常運作。",
+        "tag": "測試分類"
       }
     },
     {
@@ -33,11 +31,10 @@
       "title": "受夠智慧電視滿版廣告又卡頓嗎？CleanYourTV 手機版 APK 實測教學：免電腦、免 Root、免訂閱 AI，一鍵把 Android TV 變成極簡 Apple TV 風格！",
       "link": "https://mobileai.net/2026/10/24/cleanyourtv/",
       "publishedISO": "2026-10-24T10:36:06.000Z",
-      "localImage": "assets/2026-W43/img/img-03.jpg",
       "copy": {
-        "shortHeadline": "手機一鍵極簡化電視",
-        "narration": "智慧電視廣告多又卡頓，CleanYourTV 可透過 USB 偵測關閉項目，改成 Apple TV 風格桌面。在版本頁連按確認鍵七次，開啟 USB 偵錯，手機與電視同連 Wi-Fi；安裝 APK、授權連線後執行清理，完成後重啟即可。三星、LG 暫不支援。",
-        "tag": "電視優化"
+        "shortHeadline": "本週焦點 3",
+        "narration": "這是第 3 篇文章的測試旁白，用來驗證管線的語音時長估算與字幕切分邏輯是否正常運作。",
+        "tag": "測試分類"
       }
     }
   ]
