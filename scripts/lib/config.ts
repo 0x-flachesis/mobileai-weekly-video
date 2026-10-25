@@ -71,11 +71,17 @@ export interface AppConfig {
 
 type Env = Record<string, string | undefined>;
 
+/** URL 環境變數清理：去空白與尾斜線。 */
+function cleanUrl(v: string | undefined, fallback: string): string {
+  const s = (v ?? "").trim().replace(/\/+$/, "");
+  return s || fallback;
+}
+
 function resolveLLM(env: Env): LLMConfig {
-  const explicit = env.LLM_PROVIDER;
+  const explicit = env.LLM_PROVIDER?.trim();
   if (explicit === "mock") return { provider: "mock" };
   if (explicit === "passthrough") return { provider: "passthrough" };
-  const apiKey = env.LLM_API_KEY ?? "";
+  const apiKey = (env.LLM_API_KEY ?? "").trim();
   if (explicit === "openai-compatible" && !apiKey) {
     throw new Error("LLM_PROVIDER=openai-compatible 需要 LLM_API_KEY");
   }
@@ -83,7 +89,7 @@ function resolveLLM(env: Env): LLMConfig {
     throw new Error(`未支援的 LLM_PROVIDER：${explicit}`);
   }
   if (!apiKey) return { provider: "passthrough" };
-  const baseUrl = (env.LLM_BASE_URL ?? "https://api.openai.com/v1").replace(/\/+$/, "");
+  const baseUrl = cleanUrl(env.LLM_BASE_URL, "https://api.openai.com/v1");
   const isOpenRouter = /openrouter\.ai/i.test(baseUrl);
   return {
     provider: "openai-compatible",
@@ -119,8 +125,8 @@ function resolveTTS(env: Env): TTSConfig {
 function buildMinimax(env: Env): TTSMinimaxConfig {
   return {
     provider: "minimax",
-    baseUrl: (env.MINIMAX_BASE_URL ?? "https://api.minimax.cn").replace(/\/+$/, ""),
-    apiKey: env.MINIMAX_API_KEY ?? "",
+    baseUrl: cleanUrl(env.MINIMAX_BASE_URL, "https://api.minimax.cn"),
+    apiKey: (env.MINIMAX_API_KEY ?? "").trim(),
     model: env.MINIMAX_TTS_MODEL ?? "speech-2.8-hd",
     voice: env.MINIMAX_TTS_VOICE ?? "male-qn-qingse",
     speed: Number.parseFloat(env.MINIMAX_TTS_SPEED ?? "1.0"),
@@ -131,8 +137,8 @@ function buildMinimax(env: Env): TTSMinimaxConfig {
 function buildOpenAITTS(env: Env): TTSOpenAICompatConfig {
   return {
     provider: "openai-compatible",
-    baseUrl: (env.TTS_BASE_URL ?? "https://api.openai.com/v1").replace(/\/+$/, ""),
-    apiKey: env.TTS_API_KEY ?? "",
+    baseUrl: cleanUrl(env.TTS_BASE_URL, "https://api.openai.com/v1"),
+    apiKey: (env.TTS_API_KEY ?? "").trim(),
     model: env.TTS_MODEL ?? "gpt-4o-mini-tts",
     voice: env.TTS_VOICE ?? "alloy",
     speed: Number.parseFloat(env.TTS_SPEED ?? "1.0"),

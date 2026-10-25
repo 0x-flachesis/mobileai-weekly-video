@@ -18,11 +18,29 @@ const pexec = promisify(execFile);
 
 /**
  * HTTP 抓取：優先走 curl（mobileai.net 的 Cloudflare 會擋 node fetch 的 TLS 指紋），
- * curl 不可用時退回 node fetch。binary=true 時以 -o 直接寫檔。
+ * curl 不可用時退回 node fetch。帶完整瀏覽器 headers 提升 datacenter IP 過 Cloudflare 的機率。
  */
 async function httpGet(url, userAgent, opts = {}) {
+  const headers = [
+    "-A",
+    userAgent,
+    "-H",
+    "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,application/json;q=0.8,*/*;q=0.7",
+    "-H",
+    "Accept-Language: zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7",
+    "-H",
+    "Sec-Fetch-Dest: document",
+    "-H",
+    "Sec-Fetch-Mode: navigate",
+    "-H",
+    "Sec-Fetch-Site: none",
+    "-H",
+    "Sec-Fetch-User: ?1",
+    "-H",
+    "Upgrade-Insecure-Requests: 1",
+  ];
   try {
-    const args = ["-sSL", "--compressed", "--max-time", "30", "-A", userAgent, "-w", "\n%{http_code}"];
+    const args = ["-sSL", "--compressed", "--max-time", "30", ...headers, "-w", "\n%{http_code}"];
     if (opts.outFile) args.push("-o", opts.outFile);
     const { stdout } = await pexec("curl", [...args, url], { maxBuffer: 20 * 1024 * 1024 });
     const body = opts.outFile ? "" : stdout.replace(/\n(\d{3})$/, "");
