@@ -1,8 +1,8 @@
 {
   "week": "2026-W43",
   "dateLabel": "10/18 – 10/25",
-  "intro": "測試開場白：mobileai 週報 10/18 – 10/25，本週共有 3 篇文章。",
-  "outro": "測試結尾：完整內容請上 mobileai.net，我們下週見。",
+  "intro": "本週 mobileai 週報：車機導航、短劇TV與清理廣告",
+  "outro": "完整內容請上 mobileai.net，別忘了訂閱追蹤每週更新！",
   "articles": [
     {
       "guid": "https://mobileai.net/?p=123128",
@@ -10,9 +10,9 @@
       "link": "https://mobileai.net/2026/10/21/diauto/",
       "publishedISO": "2026-10-21T05:37:51.000Z",
       "copy": {
-        "shortHeadline": "本週焦點 1",
-        "narration": "這是第 1 篇文章的測試旁白，用來驗證管線的語音時長估算與字幕切分邏輯是否正常運作。",
-        "tag": "測試分類"
+        "shortHeadline": "DiAuto 讓裝置變 And…",
+        "narration": "許多 Android 車機與平板無法原生支援 Android Auto，DiAuto 免 Root APK 讓裝置直接變身導航螢幕，支援 Android 13 以上，安裝流程只需下載 APK、開啟權限、選擇中文介面，完成後即進入等待連線畫面，實測 USB 連線穩定，WiFi 連線仍在研究中，適合想低",
+        "tag": "APP 教學"
       }
     },
     {
@@ -22,9 +22,9 @@
       "publishedISO": "2026-10-23T04:17:20.000Z",
       "localImage": "assets/2026-W43/img/img-02.jpg",
       "copy": {
-        "shortHeadline": "本週焦點 2",
-        "narration": "這是第 2 篇文章的測試旁白，用來驗證管線的語音時長估算與字幕切分邏輯是否正常運作。",
-        "tag": "測試分類"
+        "shortHeadline": "紅果TV 上電視看短劇",
+        "narration": "官方尚未推出 Android TV 版紅果短劇，第三方 紅果TV APK 讓 Google TV、小米、安博等盒子也能追劇，透過 LocalSend 傳輸安裝，需在安全提示選「仍要安裝」並允許權限，介面支援分類、榜單、彈幕與語音搜尋，播放異常可切換軟體解碼，建議使用新帳號登入以免風險。",
+        "tag": "影音娛樂"
       }
     },
     {
@@ -34,9 +34,9 @@
       "publishedISO": "2026-10-24T10:36:06.000Z",
       "localImage": "assets/2026-W43/img/img-03.jpg",
       "copy": {
-        "shortHeadline": "本週焦點 3",
-        "narration": "這是第 3 篇文章的測試旁白，用來驗證管線的語音時長估算與字幕切分邏輯是否正常運作。",
-        "tag": "測試分類"
+        "shortHeadline": "CleanYourTV 手機版",
+        "narration": "智慧電視常因廣告與預載應用導致卡頓，CleanYourTV 手機版免 Root、免訂閱 AI，僅需開啟電視 USB 偵錯、手機安裝 APK 並連同一 WiFi，選擇裝置點擊「Make it clean」即可一鍵關閉多項系統服務，優化過程會同步顯示進度，完成後重開機即呈現極簡 Apple TV 風格桌",
+        "tag": "生活科技"
       }
     }
   ]
