@@ -196,12 +196,11 @@ test("OpenRouter auto:free：自動抓免費模型、排除黑名單、instruct 
       temperature: 0.4,
     });
     await llm.generateIntroOutro({ week: "2026-W43", dateLabel: "10/18 – 10/24", articleTitles: ["t"] });
-    // instruct 加權在前（gemma-it、nemotron 排在 base-lm 前），黑名單與付費排除
+    // instruct 加權在前（gemma-it、nemotron 排在 base-lm 前），黑名單與付費排除，上限 3
     assert.deepEqual(calls[0].body.models, [
       "nvidia/nemotron-3-super-120b-a12b:free",
       "google/gemma-4-31b-it:free",
       "foo/base-lm:free",
-      "liquid/lfm-2.5-2.6b:free",
     ]);
     assert.equal(calls[0].body.model, undefined);
   } finally {
@@ -232,7 +231,6 @@ test("OpenRouter auto:free：清單抓不到 → 內建備援清單", async () =
       "nvidia/nemotron-3-super-120b-a12b:free",
       "google/gemma-4-31b-it:free",
       "google/gemma-4-26b-a4b-it:free",
-      "liquid/lfm-2.5-2.6b:free",
     ]);
   } finally {
     globalThis.fetch = originalFetch;

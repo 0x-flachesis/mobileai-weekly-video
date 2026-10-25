@@ -18,7 +18,7 @@ interface ChatMessage {
 const AUTO_BLOCKLIST = /content-safety|guard|embed|reranker/i;
 /** 偏好 instruction-tuned 聊天模型（排序加權）。 */
 const INSTRUCT_HINT = /(-it$|-it:|-instruct|chat|qwen|gemma|nemotron|deepseek|llama)/i;
-const AUTO_MODEL_COUNT = 4;
+const AUTO_MODEL_COUNT = 3; // OpenRouter models 陣列上限 3 個
 
 interface OpenRouterModel {
   id: string;
@@ -44,12 +44,11 @@ export async function fetchOpenRouterFreeModels(baseUrl: string, apiKey: string)
   return picked;
 }
 
-/** 自動模式抓不到清單時的內建備援（手動快照，可能過期但堪用）。 */
+/** 自動模式抓不到清單時的內建備援（手動快照，可能過期但堪用；上限 3 個）。 */
 export const OPENROUTER_FREE_FALLBACK = [
   "nvidia/nemotron-3-super-120b-a12b:free",
   "google/gemma-4-31b-it:free",
   "google/gemma-4-26b-a4b-it:free",
-  "liquid/lfm-2.5-2.6b:free",
 ];
 
 /** OpenAI 相容 chat completions（GLM / OpenAI / Ollama / OpenRouter …）。 */
