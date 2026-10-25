@@ -19,7 +19,8 @@
     "studio": "remotion studio",
     "test": "node --test 'test/*.test.ts'",
     "gen:sfx": "node scripts/gen-sfx.mjs",
-    "assets": "node scripts/gen-sfx.mjs && node scripts/gen-bgm.mjs"
+    "assets": "node scripts/gen-sfx.mjs && node scripts/gen-bgm.mjs",
+    "release": "node scripts/publish-release.mjs"
   },
   "dependencies": {
     "@remotion/bundler": "^4.0.538",

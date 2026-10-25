@@ -101,3 +101,14 @@ export function truncateCJK(text: string, maxLen: number): string {
   if (text.length <= maxLen) return text;
   return text.slice(0, Math.max(0, maxLen - 1)) + "…";
 }
+
+/**
+ * 旁白修剪：超過上限時，取上限內最後一個句尾標點（。！？；…）作為切點，
+ * 避免硬切在詞中間讓 TTS 唸出斷句。找不到句尾標點才硬切。
+ */
+export function clipNarration(text: string, max = 240): string {
+  const t = text.trim();
+  if (t.length <= max) return t;
+  const m = t.slice(0, max).match(/^[\s\S]*[。！？；…]/u);
+  return m ? m[0] : t.slice(0, max);
+}

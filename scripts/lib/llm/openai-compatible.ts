@@ -7,7 +7,7 @@ import type {
   LLMProvider,
 } from "./types.ts";
 import { INTRO_OUTRO_SYSTEM, SUMMARY_SYSTEM, introOutroUserPrompt, summaryUserPrompt } from "./prompts.ts";
-import { ProviderError, clampNumber, errMsg, parseJsonLoose, truncateCJK, withRetry } from "../util.ts";
+import { ProviderError, clampNumber, clipNarration, errMsg, parseJsonLoose, truncateCJK, withRetry } from "../util.ts";
 
 interface ChatMessage {
   role: "system" | "user" | "assistant";
@@ -213,7 +213,7 @@ export class OpenAICompatibleLLM implements LLMProvider {
       }
       return {
         shortHeadline: truncateCJK(item.shortHeadline.trim(), 16),
-        narration: item.narration.trim().slice(0, 150),
+        narration: clipNarration(item.narration.trim()),
         tag: truncateCJK((item.tag ?? "科技").trim(), 8),
       };
     });

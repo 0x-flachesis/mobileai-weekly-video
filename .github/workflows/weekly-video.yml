@@ -101,6 +101,13 @@ jobs:
             out/qa/
             data/issues/
 
+      - name: Publish weekly release
+        # 影片 + SRT 字幕發布到 GitHub Release（永久保存，取代會過期的 artifact）；mock 跑測試不發布
+        if: ${{ inputs.mock != true }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/publish-release.mjs
+
       - name: Commit weekly data back to main
         if: success()
         run: |

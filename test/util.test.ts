@@ -55,3 +55,17 @@ test("withRetry：retryOn=false 不重試", async () => {
   );
   assert.equal(calls, 1);
 });
+
+test("clipNarration：超長旁白切在句尾標點，不切在詞中間", async () => {
+  const { clipNarration } = await import("../scripts/lib/util.ts");
+  const long = "第一句完整敘述。".repeat(40); // 280 字，全句號
+  const clipped = clipNarration(long, 240);
+  assert.ok(clipped.length <= 240, `超過上限：${clipped.length}`);
+  assert.ok(/[。！？；…]$/u.test(clipped), `未在句界結尾：${clipped.slice(-10)}`);
+  assert.ok(!clipped.endsWith("…"), "不應用 truncateCJK 的刪節號收尾");
+  // 上限內不動原文
+  assert.equal(clipNarration("短旁白。", 240), "短旁白。");
+  // 完全沒有句尾標點才硬切
+  const noPunct = "字".repeat(300);
+  assert.equal(clipNarration(noPunct, 240).length, 240);
+});
