@@ -1,0 +1,7 @@
+name: matrix2
+on: workflow_dispatch
+jobs:
+  a:
+    runs-on: self-hosted
+    steps:
+      - run: echo hi
