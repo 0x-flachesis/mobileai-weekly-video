@@ -1,8 +1,8 @@
 {
   "week": "2026-W43",
   "dateLabel": "10/18 – 10/25",
-  "intro": "本週 mobileai 週報：車機導航、短劇TV與清理廣告",
-  "outro": "完整內容請上 mobileai.net，別忘了訂閱追蹤每週更新！",
+  "intro": "嗨！本週mobileai週報：車機免Root刪廣告TV變身",
+  "outro": "完整教學請上mobileai.net，別忘訂閱追蹤每週更多精彩！",
   "articles": [
     {
       "guid": "https://mobileai.net/?p=123128",
@@ -10,8 +10,8 @@
       "link": "https://mobileai.net/2026/10/21/diauto/",
       "publishedISO": "2026-10-21T05:37:51.000Z",
       "copy": {
-        "shortHeadline": "DiAuto 讓裝置變 And…",
-        "narration": "許多 Android 車機與平板無法原生支援 Android Auto，DiAuto 免 Root APK 讓裝置直接變身導航螢幕，支援 Android 13 以上，安裝流程只需下載 APK、開啟權限、選擇中文介面，完成後即進入等待連線畫面，實測 USB 連線穩定，WiFi 連線仍在研究中，適合想低",
+        "shortHeadline": "DiAuto 變車機導航",
+        "narration": "Android 車機和平板無法用 Android Auto 導航，現在 DiAuto 免 Root APP 就能把裝置變成導航螢幕。安裝後先將語言設為簡體中文，開啟所有權限，再透過 USB 線連接手機即可使用。雖然機種不支援 WiFi 連線，但設定簡單，適合升級車機介面。",
         "tag": "APP 教學"
       }
     },
@@ -22,9 +22,9 @@
       "publishedISO": "2026-10-23T04:17:20.000Z",
       "localImage": "assets/2026-W43/img/img-02.jpg",
       "copy": {
-        "shortHeadline": "紅果TV 上電視看短劇",
-        "narration": "官方尚未推出 Android TV 版紅果短劇，第三方 紅果TV APK 讓 Google TV、小米、安博等盒子也能追劇，透過 LocalSend 傳輸安裝，需在安全提示選「仍要安裝」並允許權限，介面支援分類、榜單、彈幕與語音搜尋，播放異常可切換軟體解碼，建議使用新帳號登入以免風險。",
-        "tag": "影音娛樂"
+        "shortHeadline": "紅果 TV 變電視追劇神器",
+        "narration": "紅果短劇官方無 Android TV 版，紅果 TV APP 可讓電視追劇。安裝 LocalSend 後，將 APK 傳輸到電視並允許安裝。進入後可瀏覽熱播、分類與榜單，支援彈幕與語音搜尋。播放若出現花屏，改用軟體解碼。因非官方軟體，建議別用主帳號登入，避免封鎖。",
+        "tag": "APP 教學"
       }
     },
     {
@@ -34,9 +34,9 @@
       "publishedISO": "2026-10-24T10:36:06.000Z",
       "localImage": "assets/2026-W43/img/img-03.jpg",
       "copy": {
-        "shortHeadline": "CleanYourTV 手機版",
-        "narration": "智慧電視常因廣告與預載應用導致卡頓，CleanYourTV 手機版免 Root、免訂閱 AI，僅需開啟電視 USB 偵錯、手機安裝 APK 並連同一 WiFi，選擇裝置點擊「Make it clean」即可一鍵關閉多項系統服務，優化過程會同步顯示進度，完成後重開機即呈現極簡 Apple TV 風格桌",
-        "tag": "生活科技"
+        "shortHeadline": "CleanYourTV 優化",
+        "narration": "智慧電視廣告多又卡頓？CleanYourTV 可免電腦、免 Root 優化 Android TV，讓介面像 Apple TV 一樣極簡。開啟電視 USB 偵錯，手機與電視同 WiFi 連線後點擊 Make it clean 一鍵清理，重開機即見簡潔桌面。三星 LG 不支援。",
+        "tag": "系統優化"
       }
     }
   ]
