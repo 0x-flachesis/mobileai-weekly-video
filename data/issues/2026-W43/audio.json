@@ -4,33 +4,33 @@
   "items": [
     {
       "key": "intro",
-      "text": "歡迎收看 mobileai 週報，帶你看本週 10/18 – 10/25 的 3 篇科技新內容。",
+      "text": "本週 mobileai 週報教你改造 Android 車機、電視與平板，享受更乾淨流暢的娛樂體驗！",
       "audio": "assets/2026-W43/audio/seg-00-intro.mp3",
-      "durationSec": 7.776
+      "durationSec": 7.944
     },
     {
       "key": "article-0",
-      "text": "之前跟大家介紹『DIPlay』這套讓 Android 車機、平板、手機變成 CarPlay 導航機的好物，就有網友詢問那有沒有把 Android 車機、平板、手機變成 Android 導航機的 APP 呢？",
+      "text": "DiAuto 免 Root，讓 Android 車機與平板化身 Android Auto 導航螢幕。本文拆解 APK 安裝、權限設定與連線流程，也要留意部分機型目前只能使用 USB",
       "audio": "assets/2026-W43/audio/seg-01.mp3",
-      "durationSec": 14.52
+      "durationSec": 13.968
     },
     {
       "key": "article-1",
-      "text": "相信很多人現在手機都有安裝『紅果短劇』來追 AI 漫劇、真人短劇，只是目前官方尚未推出 Android TV 版本來滿足大家想在電視上追劇的夢想，",
+      "text": "紅果 TV 是第三方 APK，可讓 Android TV、Google TV 與電視盒追短劇。本文示範用 LocalSend 傳檔安裝，也提醒版本維護、登入風險與花屏排除方式。",
       "audio": "assets/2026-W43/audio/seg-02.mp3",
-      "durationSec": 13.464
+      "durationSec": 14.712
     },
     {
       "key": "article-2",
-      "text": "最近這幾天在 GitHub 有個專案『CleanYourTV』相當火熱！",
+      "text": "CleanYourTV 手機版 APK 不需訂閱 AI，就能協助 Android TV 移除廣告與多餘程式，打造極簡桌面。本文示範 USB 偵錯、同網連線及優化流程，並提醒三星、L",
       "audio": "assets/2026-W43/audio/seg-03.mp3",
-      "durationSec": 5.184
+      "durationSec": 15.84
     },
     {
       "key": "outro",
-      "text": "完整教學與更多內容，都在 mobileai.net，我們下週見。",
+      "text": "完整文章請至 mobileai.net 閱讀，歡迎訂閱追蹤 mobileai 每週更新。",
       "audio": "assets/2026-W43/audio/seg-04-outro.mp3",
-      "durationSec": 5.52
+      "durationSec": 6.144
     }
   ]
 }

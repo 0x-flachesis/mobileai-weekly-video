@@ -98,6 +98,26 @@ export function makeBeatGrid(bpm: number, fps: number = FPS): BeatGrid {
   return { bpm, fps, framesPerBeat: (60 / bpm) * fps };
 }
 
+/** 旁白相對段落起點的 lead-in（frames），與 WeeklyRecap 的 VOICE_LEAD_IN 對齊。 */
+export const VOICE_LEAD_IN_FRAMES = 6;
+
+/**
+ * 段落時長：clamp(語音 + 緩衝, [min, max])，但**絕不短於語音本身**：
+ * 下限 = 語音 + lead-in(6f) + 0.9s 結尾緩衝。語音超過 max 時允許段落超過 max，
+ * 避免旁白被截斷（總長由 QA 的 120s 上限把關）。
+ */
+export function voiceAwareDuration(
+  audioSec: number,
+  pad: number,
+  min: number,
+  max: number,
+  fps: number = FPS,
+): number {
+  const clamped = Math.min(max, Math.max(min, audioSec + pad));
+  const floor = audioSec + VOICE_LEAD_IN_FRAMES / fps + 0.9;
+  return Math.max(clamped, floor);
+}
+
 /** 吸附到最近的節拍 frame。 */
 export function snapToBeat(frame: number, grid: BeatGrid): number {
   const beats = Math.round(frame / grid.framesPerBeat);

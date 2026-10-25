@@ -19,13 +19,9 @@ import {
   kenburnsFor,
   makeBeatGrid,
   snapToBeat,
+  voiceAwareDuration,
 } from "./lib/storyboard.ts";
-import { clampNumber, errMsg, hashString } from "./lib/util.ts";
-
-/** 段落時長（秒）：clamp(語音 + 緩衝, [min, max]) */
-function segDuration(audioSec, pad, min, max) {
-  return clampNumber(audioSec + pad, min, max);
-}
+import { errMsg, hashString } from "./lib/util.ts";
 
 export async function runStoryboard(opts = {}) {
   const cfg = loadConfig();
@@ -41,12 +37,15 @@ export async function runStoryboard(opts = {}) {
   const bgm = pickBgm(cfg, weekId);
   const grid = makeBeatGrid(bgm.bpm, FPS);
 
-  // 文章多時收緊每段時長，控制總長
+  // 文章多時收緊每段時長，控制總長（voiceAwareDuration 保證語音不被截斷）
   let artPad = 1.8, artMin = 7, artMax = 16;
-  const introSec = segDuration(audioByKey.get("intro").durationSec, 1.2, 3, 6);
-  const outroSec = segDuration(audioByKey.get("outro").durationSec, 1.6, 4, 7);
+  const introAudio = audioByKey.get("intro").durationSec;
+  const outroAudio = audioByKey.get("outro").durationSec;
+  const artAudio = (i) => audioByKey.get(`article-${i}`).durationSec;
+  const introSec = voiceAwareDuration(introAudio, 1.2, 3, 6);
+  const outroSec = voiceAwareDuration(outroAudio, 1.6, 4, 7);
   let est = introSec + outroSec;
-  for (const a of copy.articles) est += segDuration(audioByKey.get(`article-${copy.articles.indexOf(a)}`).durationSec, artPad, artMin, artMax);
+  for (const [i] of copy.articles.entries()) est += voiceAwareDuration(artAudio(i), artPad, artMin, artMax);
   if (est > 95) { artPad = 1.0; artMin = 6; artMax = 12; }
   if (est > 115) { artPad = 0.6; artMin = 5; artMax = 9; }
 
@@ -54,7 +53,7 @@ export async function runStoryboard(opts = {}) {
   const seed = hashString(`${weekId}:mobileai-weekly`);
   const rawDurations = [
     { kind: "intro", sec: introSec },
-    ...copy.articles.map((_, i) => ({ kind: "article", sec: segDuration(audioByKey.get(`article-${i}`).durationSec, artPad, artMin, artMax), i })),
+    ...copy.articles.map((_, i) => ({ kind: "article", sec: voiceAwareDuration(artAudio(i), artPad, artMin, artMax), i })),
     { kind: "outro", sec: outroSec },
   ];
 

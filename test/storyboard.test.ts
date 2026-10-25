@@ -6,8 +6,20 @@ import {
   makeBeatGrid,
   snapError,
   snapToBeat,
+  voiceAwareDuration,
   wrapHeadline,
 } from "../scripts/lib/storyboard.ts";
+
+test("voiceAwareDuration：語音不被截斷", () => {
+  // 一般情況：clamp 生效
+  assert.equal(voiceAwareDuration(5, 1.8, 7, 16), 7); // 5+1.8=6.8 → min 7；floor 6.1 不影響
+  assert.equal(voiceAwareDuration(10, 1.8, 7, 16), 11.8); // floor 11.1 < 11.8
+  // 語音超過 max：下限 = 語音 + lead-in(0.2s) + 0.9s，允許超過 max
+  const long = voiceAwareDuration(20, 1.8, 7, 16);
+  assert.ok(Math.abs(long - (20 + 6 / 30 + 0.9)) < 0.001, `長語音被截斷：${long}`);
+  const real = voiceAwareDuration(15.84, 1.8, 7, 16);
+  assert.ok(real >= 15.84 + 1.1 - 0.001, `長語音被截斷：${real}`);
+});
 
 test("snapToBeat：吸附後誤差不超過半拍", () => {
   const grid = makeBeatGrid(110, 30); // 16.36 frames/beat
