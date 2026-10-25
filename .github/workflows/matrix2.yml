@@ -2,6 +2,6 @@ name: matrix2
 on: workflow_dispatch
 jobs:
   a:
-    runs-on: self-hosted
+    runs-on: home
     steps:
       - run: echo hi
