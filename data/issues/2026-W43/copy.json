@@ -1,8 +1,8 @@
 {
   "week": "2026-W43",
   "dateLabel": "10/18 – 10/25",
-  "intro": "mobileai 週報本週三篇APP教學，帶你玩轉智慧裝置！",
-  "outro": "完整內容請至 mobileai.net 閱讀，並訂閱追蹤每週更新！",
+  "intro": "mobileai 週報本週精選車機、電視三款 APK 教學！",
+  "outro": "完整文章請到 mobileai.net 閱讀，並訂閱追蹤每週更新！",
   "articles": [
     {
       "guid": "https://mobileai.net/?p=123128",
@@ -11,9 +11,9 @@
       "publishedISO": "2026-10-21T05:37:51.000Z",
       "localImage": "assets/2026-W43/img/img-01.jpg",
       "copy": {
-        "shortHeadline": "DiAuto 導航連線教學",
-        "narration": "Android 車機與平板想變成 Android Auto 導航機，不一定要 Root。安裝 DiAuto 後，依序設定簡體中文、同意權限並完成初始化，再以 USB 連接裝置即可啟動；本文也整理開機自動連線、Wi-Fi 相容性與 Android 13 以上等重點。",
-        "tag": "APP 教學"
+        "shortHeadline": "DiAuto 平板變車機",
+        "narration": "Android 車機與平板常缺原生 Android Auto，DiAuto 可免 Root 將裝置化身導航螢幕。從 GitHub 下載 APK，安裝後選擇簡體中文、同意權限並完成設定，再以 USB 連線即可啟動；部分機型的 Wi-Fi 連線仍可能失敗。",
+        "tag": "APP教學"
       }
     },
     {
@@ -23,8 +23,8 @@
       "publishedISO": "2026-10-23T04:17:20.000Z",
       "localImage": "assets/2026-W43/img/img-02.jpg",
       "copy": {
-        "shortHeadline": "紅果 TV 追劇安裝教學",
-        "narration": "手機能看紅果短劇，電視卻沒有官方 Android TV 版。第三方紅果 TV 可先在電腦與電視安裝 LocalSend，把 APK 從電腦傳到電視，再允許安裝與授權；支援熱播、分類、榜單和彈幕。若花屏或影音不同步，可改用軟體解碼，但登入主帳號可能遭限制。",
+        "shortHeadline": "紅果短劇搬上電視",
+        "narration": "手機能看紅果短劇，Android TV 卻沒有官方版本。紅果 TV 是持續維護的第三方 APK，支援多種電視與盒子；電腦和電視安裝 LocalSend 傳檔後，完成安裝與授權即可操作。遇花屏或不同步可改用軟體解碼，但非官方版登入可能使帳號遭限制。",
         "tag": "追劇教學"
       }
     },
@@ -35,9 +35,9 @@
       "publishedISO": "2026-10-24T10:36:06.000Z",
       "localImage": "assets/2026-W43/img/img-03.jpg",
       "copy": {
-        "shortHeadline": "CleanYourTV 實測",
-        "narration": "智慧電視廣告多又卡頓？用手機版 CleanYourTV，免電腦、免 Root，也不必訂閱 AI，就能替 Android TV 重新整理。先開啟電視的開發人員選項與 USB 偵錯，再讓手機、電視使用同一 Wi-Fi；連線授權後偵測項目並一鍵優化，重開機即可換成極簡桌面。",
-        "tag": "APP 實測"
+        "shortHeadline": "手機一鍵極簡化電視",
+        "narration": "智慧電視廣告多又卡頓，CleanYourTV 可透過 USB 偵測關閉項目，改成 Apple TV 風格桌面。在版本頁連按確認鍵七次，開啟 USB 偵錯，手機與電視同連 Wi-Fi；安裝 APK、授權連線後執行清理，完成後重啟即可。三星、LG 暫不支援。",
+        "tag": "電視優化"
       }
     }
   ]

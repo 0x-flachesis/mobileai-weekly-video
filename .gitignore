@@ -1,8 +1,17 @@
+# 依賴與建置產物
 node_modules/
 out/
 output/
 public/assets/
+
+# 環境設定（.env.example 為範本，須追蹤）
 .env
 .env.*
+!.env.example
+
+# 日誌與系統／編輯器暫存
 *.log
 .DS_Store
+Thumbs.db
+.idea/
+.vscode/
