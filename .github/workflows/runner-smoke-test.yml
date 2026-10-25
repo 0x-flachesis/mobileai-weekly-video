@@ -1,16 +1,17 @@
 name: runner-smoke-test
 
-# 最小連通性測試：確認 org runner group 能服務此 repo
-#（區分 label 不匹配 vs runner group 存取限制）
+# 連通性矩陣測試：分別用不同 runs-on 對照
 on:
   workflow_dispatch:
 
 jobs:
-  probe:
+  probe-home:
+    runs-on: home
+    timeout-minutes: 5
+    steps:
+      - run: echo "runner: $(hostname) @ $(uname -m)"
+  probe-selfhosted:
     runs-on: self-hosted
     timeout-minutes: 5
     steps:
-      - run: |
-          echo "runner: $(hostname) @ $(uname -m)"
-          echo "labels: ${RUNNER_LABELS:-unknown}"
-          whoami
+      - run: echo "runner: $(hostname) @ $(uname -m)"
