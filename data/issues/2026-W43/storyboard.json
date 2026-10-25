@@ -7,7 +7,7 @@
   "fps": 30,
   "width": 1920,
   "height": 1080,
-  "totalFrames": 990,
+  "totalFrames": 1710,
   "bgm": {
     "src": "bgm/bgm-focus-100.mp3",
     "volume": 0.34,
@@ -22,7 +22,7 @@
       "title": "mobileai 週報",
       "dateLabel": "10/18 – 10/25",
       "week": "2026-W43",
-      "articleCount": 1,
+      "articleCount": 3,
       "audio": "assets/2026-W43/audio/seg-00-intro.mp3",
       "audioDurationSec": 10.64
     },
@@ -35,7 +35,6 @@
       "headline": "本週焦點 1",
       "tag": "測試分類",
       "link": "https://mobileai.net/2026/10/21/diauto/",
-      "image": "assets/2026-W43/img/img-01.jpg",
       "kenburns": {
         "fromScale": 1.1435765862464904,
         "toScale": 1.0677124186698348,
@@ -65,14 +64,92 @@
       ]
     },
     {
-      "kind": "outro",
+      "kind": "article",
+      "index": 1,
       "from": 720,
+      "duration": 360,
+      "articleTitle": "讓電視也能看紅果短劇！『紅果 TV』第三方 APK 下載與安裝教學，Android TV、Google TV、小米、安博、小雲盒子皆適用",
+      "headline": "本週焦點 2",
+      "tag": "測試分類",
+      "link": "https://mobileai.net/2026/10/23/hongguo-tv-apk/",
+      "image": "assets/2026-W43/img/img-02.jpg",
+      "kenburns": {
+        "fromScale": 1.0614076919900253,
+        "toScale": 1.1666439066827297,
+        "fromX": 0.4992954453919083,
+        "fromY": 0.12588493772782386,
+        "toX": 0.3382826665882021,
+        "toY": 0.17234070748090746
+      },
+      "audio": "assets/2026-W43/audio/seg-02.mp3",
+      "audioDurationSec": 10.4,
+      "captions": [
+        {
+          "text": "這是第 2 篇文章的測試旁白",
+          "from": 6,
+          "duration": 107
+        },
+        {
+          "text": "用來驗證管線的語音時長估算與字幕",
+          "from": 113,
+          "duration": 122
+        },
+        {
+          "text": "切分邏輯是否正常運作",
+          "from": 235,
+          "duration": 77
+        }
+      ]
+    },
+    {
+      "kind": "article",
+      "index": 2,
+      "from": 1080,
+      "duration": 360,
+      "articleTitle": "受夠智慧電視滿版廣告又卡頓嗎？CleanYourTV 手機版 APK 實測教學：免電腦、免 Root、免訂閱 AI，一鍵把 Android TV 變成極簡 Apple TV 風格！",
+      "headline": "本週焦點 3",
+      "tag": "測試分類",
+      "link": "https://mobileai.net/2026/10/24/cleanyourtv/",
+      "image": "assets/2026-W43/img/img-03.jpg",
+      "kenburns": {
+        "fromScale": 1.0473118911846542,
+        "toScale": 1.1451955861598253,
+        "fromX": -0.050350035843439396,
+        "fromY": 0.35176841560751204,
+        "toX": -0.21578307839110492,
+        "toY": 0.29423501297831534
+      },
+      "audio": "assets/2026-W43/audio/seg-03.mp3",
+      "audioDurationSec": 10.4,
+      "captions": [
+        {
+          "text": "這是第 3 篇文章的測試旁白",
+          "from": 6,
+          "duration": 107
+        },
+        {
+          "text": "用來驗證管線的語音時長估算與字幕",
+          "from": 113,
+          "duration": 122
+        },
+        {
+          "text": "切分邏輯是否正常運作",
+          "from": 235,
+          "duration": 77
+        }
+      ]
+    },
+    {
+      "kind": "outro",
+      "from": 1440,
       "duration": 270,
       "headlines": [
-        "本週焦點 1"
+        "本週焦點 1",
+        "本週焦點 2",
+        "本週焦點 3"
       ],
       "site": "mobileai.net",
-      "audio": "assets/2026-W43/audio/seg-02-outro.mp3",
+      "audio": "assets/2026-W43/audio/seg-04-outro.mp3",
       "audioDurationSec": 7.78
     }
   ],
@@ -88,13 +165,23 @@
       "volume": 0.4
     },
     {
+      "name": "whoosh",
+      "atFrame": 720,
+      "volume": 0.25
+    },
+    {
+      "name": "whoosh",
+      "atFrame": 1080,
+      "volume": 0.4
+    },
+    {
       "name": "riser",
-      "atFrame": 675,
+      "atFrame": 1395,
       "volume": 0.2
     },
     {
       "name": "impact",
-      "atFrame": 720,
+      "atFrame": 1440,
       "volume": 0.4
     }
   ],

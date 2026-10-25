@@ -131,18 +131,45 @@ async function fetchText(url, userAgent) {
   });
 }
 
+/** 圖片下載：best-effort。mobileai.net 的 wp-content 有獨立 Cloudflare JS 挑戰
+ *（wp-json/文章頁沒有），headless 環境解不了 → 失敗時降級為無圖（漸層卡）。 */
 async function downloadImage(url, outfile, userAgent) {
-  await withRetry(
-    async () => {
-      await httpGet(url, userAgent, { outFile: outfile });
-      const { stat } = await import("node:fs/promises");
-      const size = (await stat(outfile)).size;
-      if (size < 2048) {
-        throw Object.assign(new Error(`圖片過小（${size}B）：${url}`), { retryable: true });
-      }
-    },
-    { label: `img ${url}`, retries: 2, retryOn: (err) => err?.retryable !== false },
-  );
+  try {
+    await withRetry(
+      async () => {
+        await httpGet(url, userAgent, { outFile: outfile });
+        const { stat, open } = await import("node:fs/promises");
+        const size = (await stat(outfile)).size;
+        if (size < 2048) {
+          throw Object.assign(new Error(`圖片過小（${size}B）：${url}`), { retryable: true });
+        }
+        // 驗證 magic bytes：挑戰頁以 HTML 回應（size 可能大於 2048）
+        const fh = await open(outfile, "r");
+        let ok;
+        try {
+          const { buffer } = await fh.read(Buffer.alloc(4), 0, 4, 0);
+          ok =
+            (buffer[0] === 0xff && buffer[1] === 0xd8) || // JPEG
+            buffer.toString("ascii", 1, 4) === "PNG" ||
+            buffer.toString("ascii", 0, 3) === "GIF" ||
+            buffer.toString("ascii", 0, 4) === "RIFF"; // WebP
+        } finally {
+          await fh.close();
+        }
+        if (!ok) {
+          throw Object.assign(new Error(`回應非圖片（疑為 Cloudflare 挑戰頁）：${url}`), {
+            retryable: false, // 挑戰頁重試無意義，直接放棄走降級
+          });
+        }
+      },
+      { label: `img ${url}`, retries: 1, retryOn: (err) => err?.retryable === true },
+    );
+    return true;
+  } catch (err) {
+    console.warn(`[fetch] ⚠ 圖片跳過（降級為漸層卡）：${errMsg(err)}`);
+    await import("node:fs/promises").then(({ unlink }) => unlink(outfile).catch(() => {}));
+    return false;
+  }
 }
 
 function imageExtFromUrl(url) {
@@ -292,19 +319,15 @@ export async function runFetchFeed(opts = {}) {
         console.warn(`[fetch] (${i + 1}/${items.length}) ⚠ 文章頁抽取失敗，降級使用 RSS 資料：${errMsg(err)}`);
       }
     }
-    try {
-      if (article.imageUrl) {
-        const ext = imageExtFromUrl(article.imageUrl);
-        const localAbs = join(week.assetsDir, "img", `img-${String(i + 1).padStart(2, "0")}${ext}`);
-        await downloadImage(article.imageUrl, localAbs, cfg.userAgent);
-        article.localImage = `${week.relAssetsDir}/img/${basename(localAbs)}`;
-      }
-      console.log(
-        `[fetch] (${i + 1}/${items.length}) ✓ ${article.title.slice(0, 26)}… 全文 ${article.contentText.length} 字${article.localImage ? "＋圖" : "（無圖）"}`,
-      );
-    } catch (err) {
-      console.warn(`[fetch] (${i + 1}/${items.length}) ⚠ 圖片下載失敗：${errMsg(err)}`);
+    if (article.imageUrl) {
+      const ext = imageExtFromUrl(article.imageUrl);
+      const localAbs = join(week.assetsDir, "img", `img-${String(i + 1).padStart(2, "0")}${ext}`);
+      const got = await downloadImage(article.imageUrl, localAbs, cfg.userAgent);
+      if (got) article.localImage = `${week.relAssetsDir}/img/${basename(localAbs)}`;
     }
+    console.log(
+      `[fetch] (${i + 1}/${items.length}) ✓ ${article.title.slice(0, 26)}… 全文 ${article.contentText.length} 字${article.localImage ? "＋圖" : "（無圖，漸層卡）"}`,
+    );
     articles.push(article);
   }
 

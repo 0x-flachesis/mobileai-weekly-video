@@ -1,7 +1,7 @@
 {
   "week": "2026-W43",
   "dateLabel": "10/18 – 10/25",
-  "intro": "測試開場白：mobileai 週報 10/18 – 10/25，本週共有 1 篇文章。",
+  "intro": "測試開場白：mobileai 週報 10/18 – 10/25，本週共有 3 篇文章。",
   "outro": "測試結尾：完整內容請上 mobileai.net，我們下週見。",
   "articles": [
     {
@@ -9,10 +9,33 @@
       "title": "讓 Android 車機、平板變 Android Auto  導航螢幕！DiAuto 免 Root APK 下載安裝與連線教學",
       "link": "https://mobileai.net/2026/10/21/diauto/",
       "publishedISO": "2026-10-21T05:37:51.000Z",
-      "localImage": "assets/2026-W43/img/img-01.jpg",
       "copy": {
         "shortHeadline": "本週焦點 1",
         "narration": "這是第 1 篇文章的測試旁白，用來驗證管線的語音時長估算與字幕切分邏輯是否正常運作。",
+        "tag": "測試分類"
+      }
+    },
+    {
+      "guid": "https://mobileai.net/?p=123141",
+      "title": "讓電視也能看紅果短劇！『紅果 TV』第三方 APK 下載與安裝教學，Android TV、Google TV、小米、安博、小雲盒子皆適用",
+      "link": "https://mobileai.net/2026/10/23/hongguo-tv-apk/",
+      "publishedISO": "2026-10-23T04:17:20.000Z",
+      "localImage": "assets/2026-W43/img/img-02.jpg",
+      "copy": {
+        "shortHeadline": "本週焦點 2",
+        "narration": "這是第 2 篇文章的測試旁白，用來驗證管線的語音時長估算與字幕切分邏輯是否正常運作。",
+        "tag": "測試分類"
+      }
+    },
+    {
+      "guid": "https://mobileai.net/?p=123156",
+      "title": "受夠智慧電視滿版廣告又卡頓嗎？CleanYourTV 手機版 APK 實測教學：免電腦、免 Root、免訂閱 AI，一鍵把 Android TV 變成極簡 Apple TV 風格！",
+      "link": "https://mobileai.net/2026/10/24/cleanyourtv/",
+      "publishedISO": "2026-10-24T10:36:06.000Z",
+      "localImage": "assets/2026-W43/img/img-03.jpg",
+      "copy": {
+        "shortHeadline": "本週焦點 3",
+        "narration": "這是第 3 篇文章的測試旁白，用來驗證管線的語音時長估算與字幕切分邏輯是否正常運作。",
         "tag": "測試分類"
       }
     }
