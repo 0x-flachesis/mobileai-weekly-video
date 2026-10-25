@@ -7,7 +7,7 @@
   "fps": 30,
   "width": 1920,
   "height": 1080,
-  "totalFrames": 1440,
+  "totalFrames": 1548,
   "bgm": {
     "src": "bgm/bgm-focus-100.mp3",
     "volume": 0.34,
@@ -30,9 +30,9 @@
       "kind": "article",
       "index": 0,
       "from": 180,
-      "duration": 324,
+      "duration": 486,
       "articleTitle": "讓 Android 車機、平板變 Android Auto  導航螢幕！DiAuto 免 Root APK 下載安裝與連線教學",
-      "headline": "讓 Android 車機、平板…",
+      "headline": "讓 Android 車機",
       "tag": "軟體・APP",
       "link": "https://mobileai.net/2026/10/21/diauto/",
       "image": "assets/2026-W43/img/img-01.jpg",
@@ -45,47 +45,67 @@
         "toY": -0.3761812088638544
       },
       "audio": "assets/2026-W43/audio/seg-01.mp3",
-      "audioDurationSec": 8.808,
+      "audioDurationSec": 14.52,
       "captions": [
         {
           "text": "之前跟大家介紹『DIPlay』這",
           "from": 6,
-          "duration": 74
+          "duration": 71
         },
         {
           "text": "套讓 Android 車機",
-          "from": 80,
-          "duration": 60
+          "from": 77,
+          "duration": 58
         },
         {
           "text": "平板",
-          "from": 140,
+          "from": 135,
           "duration": 9
         },
         {
           "text": "手機變成 CarPlay 導航機",
-          "from": 149,
-          "duration": 74
+          "from": 144,
+          "duration": 71
         },
         {
           "text": "的好物",
-          "from": 223,
-          "duration": 14
+          "from": 215,
+          "duration": 13
         },
         {
-          "text": "就有 […]",
-          "from": 237,
+          "text": "就有網友詢問那有沒有把 Andr",
+          "from": 228,
+          "duration": 71
+        },
+        {
+          "text": "oid 車機",
+          "from": 299,
           "duration": 27
+        },
+        {
+          "text": "平板",
+          "from": 326,
+          "duration": 9
+        },
+        {
+          "text": "手機變成 Android 導航機",
+          "from": 335,
+          "duration": 71
+        },
+        {
+          "text": "的 APP 呢",
+          "from": 406,
+          "duration": 30
         }
       ]
     },
     {
       "kind": "article",
       "index": 1,
-      "from": 504,
-      "duration": 378,
+      "from": 666,
+      "duration": 450,
       "articleTitle": "讓電視也能看紅果短劇！『紅果 TV』第三方 APK 下載與安裝教學，Android TV、Google TV、小米、安博、小雲盒子皆適用",
-      "headline": "讓電視也能看紅果短劇！『紅果 …",
+      "headline": "讓電視也能看紅果短劇",
       "tag": "軟體・APP",
       "link": "https://mobileai.net/2026/10/23/hongguo-tv-apk/",
       "image": "assets/2026-W43/img/img-02.jpg",
@@ -98,42 +118,47 @@
         "toY": 0.17234070748090746
       },
       "audio": "assets/2026-W43/audio/seg-02.mp3",
-      "audioDurationSec": 10.8,
+      "audioDurationSec": 13.464,
       "captions": [
         {
           "text": "相信很多人現在手機都有安裝『紅果",
           "from": 6,
-          "duration": 88
+          "duration": 91
         },
         {
           "text": "短劇』來追 AI 漫劇",
-          "from": 94,
-          "duration": 60
+          "from": 97,
+          "duration": 63
         },
         {
           "text": "真人短劇",
-          "from": 154,
-          "duration": 22
+          "from": 160,
+          "duration": 23
         },
         {
           "text": "只是目前官方尚未推出 Andro",
-          "from": 176,
-          "duration": 88
+          "from": 183,
+          "duration": 91
         },
         {
-          "text": "id TV […] 這",
-          "from": 264,
-          "duration": 60
+          "text": "id TV 版本來滿足大家想在電",
+          "from": 274,
+          "duration": 91
+        },
+        {
+          "text": "視上追劇的夢想",
+          "from": 365,
+          "duration": 39
         }
       ]
     },
     {
       "kind": "article",
       "index": 2,
-      "from": 882,
-      "duration": 342,
+      "from": 1116,
+      "duration": 216,
       "articleTitle": "受夠智慧電視滿版廣告又卡頓嗎？CleanYourTV 手機版 APK 實測教學：免電腦、免 Root、免訂閱 AI，一鍵把 Android TV 變成極簡 Apple TV 風格！",
-      "headline": "受夠智慧電視滿版廣告又卡頓嗎？…",
+      "headline": "受夠智慧電視滿版廣告又卡頓嗎",
       "tag": "軟體・APP",
       "link": "https://mobileai.net/2026/10/24/cleanyourtv/",
       "image": "assets/2026-W43/img/img-03.jpg",
@@ -146,43 +171,33 @@
         "toY": 0.29423501297831534
       },
       "audio": "assets/2026-W43/audio/seg-03.mp3",
-      "audioDurationSec": 9.312,
+      "audioDurationSec": 5.184,
       "captions": [
         {
           "text": "最近這幾天在 GitHub 有個",
           "from": 6,
-          "duration": 75
+          "duration": 69
         },
         {
           "text": "專案『CleanYourTV』相",
-          "from": 81,
-          "duration": 75
+          "from": 75,
+          "duration": 69
         },
         {
           "text": "當火熱",
-          "from": 156,
-          "duration": 14
-        },
-        {
-          "text": "簡單說就是利用 AI 搭配這個開",
-          "from": 170,
-          "duration": 75
-        },
-        {
-          "text": "源的專 […]",
-          "from": 245,
-          "duration": 33
+          "from": 144,
+          "duration": 12
         }
       ]
     },
     {
       "kind": "outro",
-      "from": 1224,
+      "from": 1332,
       "duration": 216,
       "headlines": [
-        "讓 Android 車機、平板…",
-        "讓電視也能看紅果短劇！『紅果 …",
-        "受夠智慧電視滿版廣告又卡頓嗎？…"
+        "讓 Android 車機",
+        "讓電視也能看紅果短劇",
+        "受夠智慧電視滿版廣告又卡頓嗎"
       ],
       "site": "mobileai.net",
       "audio": "assets/2026-W43/audio/seg-04-outro.mp3",
@@ -202,22 +217,22 @@
     },
     {
       "name": "whoosh",
-      "atFrame": 504,
+      "atFrame": 666,
       "volume": 0.25
     },
     {
       "name": "whoosh",
-      "atFrame": 882,
+      "atFrame": 1116,
       "volume": 0.4
     },
     {
       "name": "riser",
-      "atFrame": 1179,
+      "atFrame": 1287,
       "volume": 0.2
     },
     {
       "name": "impact",
-      "atFrame": 1224,
+      "atFrame": 1332,
       "volume": 0.4
     }
   ],

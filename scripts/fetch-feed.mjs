@@ -78,24 +78,78 @@ function imageExtFromUrl(url) {
   return m ? `.${m[1].toLowerCase().replace("jpeg", "jpg")}` : ".jpg";
 }
 
-/** 從文章 HTML 抽取 og:image 與內文文字。 */
+/** 從文章 HTML 抽取 og:image 與內文文字（WP API 不可用時的 fallback）。 */
 export function extractArticle(html) {
   const $ = cheerio.load(html);
   const ogImage = $('meta[property="og:image"]').attr("content")?.trim() || undefined;
   const contentRoot =
     $(".entry-content").first().length
       ? $(".entry-content").first()
-      : $("article").first().length
-        ? $("article").first()
-        : $("body");
-  contentRoot.find("script, style, noscript, iframe, .sharedaddy, .jp-relatedposts").remove();
+      : $("article .entry-content").first().length
+        ? $("article .entry-content").first()
+        : $(".post-content, .article-content").first().length
+          ? $(".post-content, .article-content").first()
+          : $("article").first().length
+            ? $("article").first()
+            : $("body");
+  contentRoot
+    .find("script, style, noscript, iframe, nav, header, footer, aside, form, .sharedaddy, .jp-relatedposts, #comments, .comments, .related-posts, .post-ratings")
+    .remove();
   const contentText = contentRoot
     .text()
     .replace(/\[[^\]]*\]\([^)]*\)/g, "")
     .replace(/https?:\/\/\S+/g, "")
     .replace(/\s+/g, " ")
+    // 去除麵包屑前綴（「首頁→科技→…」）與開頭重複的標題+日期
+    .replace(/^首頁(→[^ ]*)*\s*/u, "")
     .trim();
-  return { ogImage, contentText: contentText.slice(0, 3000) };
+  return { ogImage, contentText: contentText.slice(0, 4000) };
+}
+
+/** HTML → 純文字（供 WP API content.rendered 使用）。 */
+function htmlToText(html) {
+  const $ = cheerio.load(`<div>${html ?? ""}</div>`);
+  $("div").find("script, style, noscript, iframe").remove();
+  return $("div")
+    .text()
+    .replace(/\[[^\]]*\]\([^)]*\)/g, "")
+    .replace(/https?:\/\/\S+/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/**
+ * 以 WordPress REST API 取得視窗內文章全文（含 _embed 的特色圖片與分類）。
+ * 回傳以正規化 link 為鍵的 Map；失敗時回空 Map（fallback 到頁面抓版）。
+ */
+export async function fetchWpPosts(siteOrigin, windowStartISO, windowEndISO, userAgent) {
+  try {
+    const url = `${siteOrigin}/wp-json/wp/v2/posts?after=${encodeURIComponent(windowStartISO)}&before=${encodeURIComponent(windowEndISO)}&per_page=20&_embed`;
+    const json = JSON.parse(await httpGet(url, userAgent));
+    if (!Array.isArray(json)) return new Map();
+    const map = new Map();
+    for (const post of json) {
+      const terms = (post._embedded?.["wp:term"] ?? [])
+        .flat()
+        .map((t) => String(t.name ?? ""))
+        .filter(Boolean);
+      map.set(normalizeLink(post.link), {
+        contentText: htmlToText(post.content?.rendered).slice(0, 4000),
+        imageUrl: post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || undefined,
+        categories: terms,
+        publishedISO: post.date_gmt ? `${post.date_gmt}Z` : undefined,
+      });
+    }
+    console.log(`[fetch] WP API：${map.size} 篇全文`);
+    return map;
+  } catch (err) {
+    console.warn(`[fetch] WP API 不可用，退回頁面抓版：${errMsg(err)}`);
+    return new Map();
+  }
+}
+
+function normalizeLink(link) {
+  return String(link ?? "").replace(/\/+$/, "").toLowerCase();
 }
 
 export async function runFetchFeed(opts = {}) {
@@ -129,6 +183,9 @@ export async function runFetchFeed(opts = {}) {
   await mkdir(join(week.assetsDir, "img"), { recursive: true });
   await mkdir(week.weekDir, { recursive: true });
 
+  const siteOrigin = new URL(opts.fixture ? "https://mobileai.net/" : cfg.feedUrl).origin;
+  const wpPosts = await fetchWpPosts(siteOrigin, week.windowStartISO, week.windowEndISO, cfg.userAgent);
+
   const articles = [];
   for (const [i, it] of items.entries()) {
     const publishedISO = it.isoDate ?? new Date(it.pubDate).toISOString();
@@ -144,24 +201,37 @@ export async function runFetchFeed(opts = {}) {
       imageUrl: undefined,
       localImage: undefined,
     };
-    try {
-      const html = await fetchText(article.link, cfg.userAgent);
-      const { ogImage, contentText } = extractArticle(html);
-      article.contentText = contentText;
-      article.imageUrl = ogImage;
-      if (!article.excerpt) article.excerpt = contentText.slice(0, 160);
-      if (ogImage) {
-        const ext = imageExtFromUrl(ogImage);
-        const localAbs = join(week.assetsDir, "img", `img-${String(i + 1).padStart(2, "0")}${ext}`);
-        await downloadImage(ogImage, localAbs, cfg.userAgent);
-        article.localImage = `${week.relAssetsDir}/img/${basename(localAbs)}`;
-        console.log(`[fetch] (${i + 1}/${items.length}) ✓ ${article.title.slice(0, 30)}… 圖片已下載`);
-      } else {
-        console.log(`[fetch] (${i + 1}/${items.length}) ✓ ${article.title.slice(0, 30)}… （無 og:image）`);
+    const wp = wpPosts.get(normalizeLink(article.link));
+    if (wp) {
+      article.contentText = wp.contentText;
+      article.imageUrl = wp.imageUrl;
+      if (wp.categories.length) article.categories = wp.categories;
+      if (!article.excerpt) article.excerpt = wp.contentText.slice(0, 160);
+    }
+    if (!article.contentText || !article.imageUrl) {
+      // WP API 沒拿到全文或圖 → 抓文章頁面補齊
+      try {
+        const html = await fetchText(article.link, cfg.userAgent);
+        const { ogImage, contentText } = extractArticle(html);
+        if (!article.contentText) article.contentText = contentText;
+        if (!article.imageUrl) article.imageUrl = ogImage;
+        if (!article.excerpt) article.excerpt = contentText.slice(0, 160);
+      } catch (err) {
+        console.warn(`[fetch] (${i + 1}/${items.length}) ⚠ 文章頁抽取失敗，降級使用 RSS 資料：${errMsg(err)}`);
       }
+    }
+    try {
+      if (article.imageUrl) {
+        const ext = imageExtFromUrl(article.imageUrl);
+        const localAbs = join(week.assetsDir, "img", `img-${String(i + 1).padStart(2, "0")}${ext}`);
+        await downloadImage(article.imageUrl, localAbs, cfg.userAgent);
+        article.localImage = `${week.relAssetsDir}/img/${basename(localAbs)}`;
+      }
+      console.log(
+        `[fetch] (${i + 1}/${items.length}) ✓ ${article.title.slice(0, 26)}… 全文 ${article.contentText.length} 字${article.localImage ? "＋圖" : "（無圖）"}`,
+      );
     } catch (err) {
-      // 文章頁失敗只降級（無圖、無內文），仍以 RSS 資料收錄
-      console.warn(`[fetch] (${i + 1}/${items.length}) ⚠ 文章頁抽取失敗，降級使用 RSS 資料：${errMsg(err)}`);
+      console.warn(`[fetch] (${i + 1}/${items.length}) ⚠ 圖片下載失敗：${errMsg(err)}`);
     }
     articles.push(article);
   }

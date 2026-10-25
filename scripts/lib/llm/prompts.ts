@@ -11,7 +11,7 @@ export function summaryUserPrompt(articles: ArticleInput[]): string {
     title: a.title,
     categories: a.categories,
     excerpt: a.excerpt.slice(0, 400),
-    content: a.contentText.slice(0, 1200),
+    content: a.contentText.slice(0, 2000),
   }));
   return `以下是本週文章（index 為對應鍵）。請為每篇產生：
 
