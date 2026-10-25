@@ -55,7 +55,8 @@ jobs:
               || sudo apt-get install -y --no-install-recommends $(echo $PKGS | sed 's/libasound2/libasound2t64/') \
               || true
           fi
-          python3 -m pip install --user edge-tts
+          # Ubuntu 24.04 PEP 668：pip 拒絕 --user 安裝，需 --break-system-packages
+          python3 -m pip install --user --break-system-packages edge-tts
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
 
       - name: Install npm dependencies
