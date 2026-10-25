@@ -114,4 +114,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/
-          git diff --cached --quiet || (git commit -m "chore(data): 週報資料更新 $(date -u +%Y-%m-%d)" && git push)
+          git diff --cached --quiet || git commit -m "chore(data): 週報資料更新 $(date -u +%Y-%m-%d)"
+          # 遠端可能有較新的 commit（排程與手動推送交錯），先 rebase 再推
+          git pull --rebase origin main
+          git push
