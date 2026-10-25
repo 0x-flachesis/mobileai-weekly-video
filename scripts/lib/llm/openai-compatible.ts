@@ -110,15 +110,21 @@ export class OpenAICompatibleLLM implements LLMProvider {
     const url = `${this.cfg.baseUrl}/chat/completions`;
     return withRetry(
       async () => {
-        const res = await fetch(url, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${this.cfg.apiKey}`,
-          },
-          body: JSON.stringify(await this.requestBody(messages)),
-          signal: AbortSignal.timeout(90_000),
-        });
+        let res: Response;
+        try {
+          res = await fetch(url, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${this.cfg.apiKey}`,
+            },
+            body: JSON.stringify(await this.requestBody(messages)),
+            signal: AbortSignal.timeout(180_000), // 免費模型常見 1-3 分鐘
+          });
+        } catch (err) {
+          // AbortError/TimeoutError（逾時）與網路層錯誤皆可重試
+          throw new ProviderError(`LLM 請求逾時或網路錯誤：${errMsg(err)}`, { retryable: true });
+        }
         if (!res.ok) {
           const body = await res.text().catch(() => "");
           const retryable = res.status >= 500 || res.status === 429 || res.status === 408;
