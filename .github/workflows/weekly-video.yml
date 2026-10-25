@@ -29,7 +29,8 @@ concurrency:
 
 jobs:
   render:
-    runs-on: ubuntu-latest
+    # org 0x-flachesis 的家用 self-hosted runner（k3s x86 desktop，家用 IP 可取全文）
+    runs-on: [self-hosted, home]
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
@@ -39,10 +40,21 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
 
-      - name: Install system dependencies
+      - name: Install system dependencies (self-hosted adaptive)
         run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends ffmpeg curl
+          need() { command -v "$1" >/dev/null 2>&1; }
+          PKGS=""
+          need ffmpeg || PKGS="$PKGS ffmpeg"
+          need curl  || PKGS="$PKGS curl"
+          python3 -m pip --version >/dev/null 2>&1 || PKGS="$PKGS python3-pip"
+          # Chromium headless shell（Remotion）需要的系統庫
+          ldconfig -p 2>/dev/null | grep -q libnss3 || PKGS="$PKGS libnss3 libnspr4 libatk1.0-0 libatk-bridge2.0-0 libcups2 libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgbm1 libasound2 libpango-1.0-0 libcairo2"
+          if [ -n "$PKGS" ]; then
+            sudo apt-get update -qq
+            sudo apt-get install -y --no-install-recommends $PKGS \
+              || sudo apt-get install -y --no-install-recommends $(echo $PKGS | sed 's/libasound2/libasound2t64/') \
+              || true
+          fi
           python3 -m pip install --user edge-tts
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
 
