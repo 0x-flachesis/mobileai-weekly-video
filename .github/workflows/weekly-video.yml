@@ -30,7 +30,7 @@ concurrency:
 jobs:
   render:
     # org 0x-flachesis 的家用 self-hosted runner（k3s x86 desktop，家用 IP 可取全文）
-    runs-on: [self-hosted, home]
+    runs-on: home
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
