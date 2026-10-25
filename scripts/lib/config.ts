@@ -83,11 +83,14 @@ function resolveLLM(env: Env): LLMConfig {
     throw new Error(`未支援的 LLM_PROVIDER：${explicit}`);
   }
   if (!apiKey) return { provider: "passthrough" };
+  const baseUrl = (env.LLM_BASE_URL ?? "https://api.openai.com/v1").replace(/\/+$/, "");
+  const isOpenRouter = /openrouter\.ai/i.test(baseUrl);
   return {
     provider: "openai-compatible",
-    baseUrl: (env.LLM_BASE_URL ?? "https://api.openai.com/v1").replace(/\/+$/, ""),
+    baseUrl,
     apiKey,
-    model: env.LLM_MODEL ?? "gpt-4o-mini",
+    // OpenRouter 未指定模型時 → auto:free（執行期自動抓免費模型清單組 fallback）
+    model: env.LLM_MODEL ?? (isOpenRouter ? "auto:free" : "gpt-4o-mini"),
     temperature: Number.parseFloat(env.LLM_TEMPERATURE ?? "0.4"),
   };
 }

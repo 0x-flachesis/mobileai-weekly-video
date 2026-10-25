@@ -41,6 +41,11 @@ test("config：LLM_API_KEY → 自動選 openai-compatible", () => {
   assert.equal(cfg.llm.baseUrl, "https://api.openai.com/v1");
 });
 
+test("config：OpenRouter 未指定 LLM_MODEL → 預設 auto:free", () => {
+  const cfg = loadConfig(env({ LLM_API_KEY: "sk-or-v1-x", LLM_BASE_URL: "https://openrouter.ai/api/v1" }));
+  assert.equal(cfg.llm.model, "auto:free");
+});
+
 test("config：GLM 端點組合", () => {
   const cfg = loadConfig(
     env({

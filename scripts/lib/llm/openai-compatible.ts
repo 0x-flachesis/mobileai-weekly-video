@@ -14,26 +14,91 @@ interface ChatMessage {
   content: string;
 }
 
+/** 自動挑選時排除的模型（審核/嵌入器不是聊天模型）。 */
+const AUTO_BLOCKLIST = /content-safety|guard|embed|reranker/i;
+/** 偏好 instruction-tuned 聊天模型（排序加權）。 */
+const INSTRUCT_HINT = /(-it$|-it:|-instruct|chat|qwen|gemma|nemotron|deepseek|llama)/i;
+const AUTO_MODEL_COUNT = 4;
+
+interface OpenRouterModel {
+  id: string;
+  context_length?: number;
+}
+
+/** 抓 OpenRouter 免費模型清單並排序（instruction-tuned 優先、context 長者優先）。 */
+export async function fetchOpenRouterFreeModels(baseUrl: string, apiKey: string): Promise<string[]> {
+  const res = await fetch(`${baseUrl}/models`, {
+    headers: { Authorization: `Bearer ${apiKey}` },
+    signal: AbortSignal.timeout(20_000),
+  });
+  if (!res.ok) throw new ProviderError(`OpenRouter /models HTTP ${res.status}`, { retryable: true });
+  const json = (await res.json()) as { data?: OpenRouterModel[] };
+  const free = (json.data ?? []).filter((m) => m.id.endsWith(":free") && !AUTO_BLOCKLIST.test(m.id));
+  free.sort((a, b) => {
+    const score = (m: OpenRouterModel) =>
+      (INSTRUCT_HINT.test(m.id) ? 1_000_000 : 0) + (m.context_length ?? 0);
+    return score(b) - score(a);
+  });
+  const picked = free.slice(0, AUTO_MODEL_COUNT).map((m) => m.id);
+  if (!picked.length) throw new ProviderError("OpenRouter 免費模型清單為空");
+  return picked;
+}
+
+/** 自動模式抓不到清單時的內建備援（手動快照，可能過期但堪用）。 */
+export const OPENROUTER_FREE_FALLBACK = [
+  "nvidia/nemotron-3-super-120b-a12b:free",
+  "google/gemma-4-31b-it:free",
+  "google/gemma-4-26b-a4b-it:free",
+  "liquid/lfm-2.5-2.6b:free",
+];
+
 /** OpenAI 相容 chat completions（GLM / OpenAI / Ollama / OpenRouter …）。 */
 export class OpenAICompatibleLLM implements LLMProvider {
   readonly name = "openai-compatible";
   cfg: LLMOpenAICompatConfig;
+  private resolvedModels: string[] | null = null;
 
   constructor(cfg: LLMOpenAICompatConfig) {
     this.cfg = cfg;
   }
 
+  private isOpenRouter(): boolean {
+    return /openrouter\.ai/i.test(this.cfg.baseUrl);
+  }
+
+  private isAutoFree(): boolean {
+    return this.isOpenRouter() && (!this.cfg.model || this.cfg.model.trim().toLowerCase() === "auto:free");
+  }
+
+  /** 解析最終模型清單：auto:free → 動態抓免費清單（失敗用內建備援）；其餘按逗號切分。 */
+  private async resolveModels(): Promise<string[]> {
+    if (this.resolvedModels) return this.resolvedModels;
+    let models: string[];
+    if (this.isAutoFree()) {
+      try {
+        models = await fetchOpenRouterFreeModels(this.cfg.baseUrl, this.cfg.apiKey);
+        console.log(`[llm:${this.name}] OpenRouter 自動挑選免費模型：${models.join(", ")}`);
+      } catch (err) {
+        console.warn(`[llm:${this.name}] 無法取得免費模型清單（${errMsg(err)}），使用內建備援清單`);
+        models = OPENROUTER_FREE_FALLBACK;
+      }
+    } else {
+      models = this.cfg.model
+        .split(",")
+        .map((m) => m.trim())
+        .filter(Boolean);
+    }
+    this.resolvedModels = models;
+    return models;
+  }
+
   /**
-   * LLM_MODEL 支援逗號分隔的多模型清單（OpenRouter 用）：
-   * 傳 2 個以上時改送 `models` 陣列，由 OpenRouter 依序 fallback
-   * （例如免費模型限流時自動切下一個）。
+   * 多模型時改送 `models` 陣列（OpenRouter 依序 fallback，
+   * 例如免費模型限流時自動切下一個）；單模型維持 `model` 欄位。
    */
-  private requestBody(messages: ChatMessage[]): Record<string, unknown> {
-    const models = this.cfg.model
-      .split(",")
-      .map((m) => m.trim())
-      .filter(Boolean);
-    const modelSpec = models.length > 1 ? { models } : { model: this.cfg.model };
+  private async requestBody(messages: ChatMessage[]): Promise<Record<string, unknown>> {
+    const models = await this.resolveModels();
+    const modelSpec = models.length > 1 ? { models } : { model: models[0] ?? this.cfg.model };
     return {
       ...modelSpec,
       temperature: this.cfg.temperature,
@@ -52,7 +117,7 @@ export class OpenAICompatibleLLM implements LLMProvider {
             "Content-Type": "application/json",
             Authorization: `Bearer ${this.cfg.apiKey}`,
           },
-          body: JSON.stringify(this.requestBody(messages)),
+          body: JSON.stringify(await this.requestBody(messages)),
           signal: AbortSignal.timeout(90_000),
         });
         if (!res.ok) {

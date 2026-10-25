@@ -83,20 +83,15 @@ scripts/lib/
 pip install edge-tts      # 或安裝 uv 後自動以 uvx 執行
 ```
 
-### OpenRouter：自動路由到免費模型
+### OpenRouter：免費模型全自動
 
-`LLM_BASE_URL=https://openrouter.ai/api/v1`，`LLM_MODEL` 填**逗號分隔的 `:free` 模型清單**，
-adapter 會改送 OpenRouter 的 `models` 陣列 — 主要模型限流/不可用時自動 fallback 到下一個，
-實際路由到的模型會印在 log：
+`LLM_BASE_URL=https://openrouter.ai/api/v1` 且 `LLM_MODEL` **留空（或填 `auto:free`）**即可：
+執行時自動呼叫 `/v1/models` 抓當下所有 `:free` 模型 → 排除審核/嵌入類
+（content-safety、guard、embed…）→ instruction-tuned 優先、context 長度排序 →
+取前 4 個組成 OpenRouter `models` fallback 陣列（限流/不可用自動切下一個，
+實際路由到的模型會印在 log）。清單抓不到時退回內建備援清單，不中斷流程。
 
-```
-LLM_BASE_URL=https://openrouter.ai/api/v1
-LLM_API_KEY=sk-or-v1-...
-LLM_MODEL=nvidia/nemotron-3-super-120b-a12b:free,google/gemma-4-31b-it:free,google/gemma-4-26b-a4b-it:free
-```
-
-免費模型清單會變動，可用 `curl https://openrouter.ai/api/v1/models` 查詢目前有哪些 `:free`。
-免費帳戶限流約 50 請求/天（曾儲值 ≥10 鎂則更高），本管線每週只需 2 次 LLM 呼叫，餘裕充足。
+也可手動指定逗號分隔清單：`LLM_MODEL=模型A:free,模型B:free`。
 
 ## 每週一 09:00 排程（GitHub Actions）
 

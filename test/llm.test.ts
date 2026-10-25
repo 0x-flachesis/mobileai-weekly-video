@@ -163,6 +163,82 @@ test("OpenAICompatibleLLM：逗號分隔 → OpenRouter models fallback 陣列",
   }
 });
 
+test("OpenRouter auto:free：自動抓免費模型、排除黑名單、instruct 優先", async () => {
+  const { OpenAICompatibleLLM } = await import("../scripts/lib/llm/openai-compatible.ts");
+  const calls = [];
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = async (url, init) => {
+    const u = String(url);
+    if (u.endsWith("/models")) {
+      return new Response(
+        JSON.stringify({
+          data: [
+            { id: "nvidia/nemotron-3.5-content-safety:free", context_length: 999999 }, // 黑名單：審核模型
+            { id: "foo/base-lm:free", context_length: 400000 }, // 非 instruct
+            { id: "google/gemma-4-31b-it:free", context_length: 128000 },
+            { id: "nvidia/nemotron-3-super-120b-a12b:free", context_length: 256000 },
+            { id: "paid/model", context_length: 999999 }, // 非免費
+            { id: "liquid/lfm-2.5-2.6b:free", context_length: 65536 },
+          ],
+        }),
+        { status: 200 },
+      );
+    }
+    calls.push({ url: u, body: JSON.parse(String(init.body)) });
+    return new Response(JSON.stringify({ model: "google/gemma-4-31b-it:free", choices: [{ message: { content: '{"intro":"a","outro":"b"}' } }] }), { status: 200 });
+  };
+  try {
+    const llm = new OpenAICompatibleLLM({
+      provider: "openai-compatible",
+      baseUrl: "https://openrouter.ai/api/v1",
+      apiKey: "k",
+      model: "auto:free",
+      temperature: 0.4,
+    });
+    await llm.generateIntroOutro({ week: "2026-W43", dateLabel: "10/18 – 10/24", articleTitles: ["t"] });
+    // instruct 加權在前（gemma-it、nemotron 排在 base-lm 前），黑名單與付費排除
+    assert.deepEqual(calls[0].body.models, [
+      "nvidia/nemotron-3-super-120b-a12b:free",
+      "google/gemma-4-31b-it:free",
+      "foo/base-lm:free",
+      "liquid/lfm-2.5-2.6b:free",
+    ]);
+    assert.equal(calls[0].body.model, undefined);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
+test("OpenRouter auto:free：清單抓不到 → 內建備援清單", async () => {
+  const { OpenAICompatibleLLM } = await import("../scripts/lib/llm/openai-compatible.ts");
+  const calls = [];
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = async (url, init) => {
+    const u = String(url);
+    if (u.endsWith("/models")) return new Response("{}", { status: 500 });
+    calls.push(JSON.parse(String(init.body)));
+    return new Response(JSON.stringify({ choices: [{ message: { content: '{"intro":"a","outro":"b"}' } }] }), { status: 200 });
+  };
+  try {
+    const llm = new OpenAICompatibleLLM({
+      provider: "openai-compatible",
+      baseUrl: "https://openrouter.ai/api/v1",
+      apiKey: "k",
+      model: "", // 未指定 → auto
+      temperature: 0.4,
+    });
+    await llm.generateIntroOutro({ week: "2026-W43", dateLabel: "10/18 – 10/24", articleTitles: ["t"] });
+    assert.deepEqual(calls[0].models, [
+      "nvidia/nemotron-3-super-120b-a12b:free",
+      "google/gemma-4-31b-it:free",
+      "google/gemma-4-26b-a4b-it:free",
+      "liquid/lfm-2.5-2.6b:free",
+    ]);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
 test("OpenAICompatibleLLM：數量不符 → 丟 ProviderError", async () => {
   const originalFetch = globalThis.fetch;
   globalThis.fetch = async () => chatResponse('{"articles":[]}');
