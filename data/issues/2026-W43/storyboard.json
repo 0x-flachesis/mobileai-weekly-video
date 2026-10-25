@@ -24,7 +24,7 @@
       "week": "2026-W43",
       "articleCount": 3,
       "audio": "assets/2026-W43/audio/seg-00-intro.mp3",
-      "audioDurationSec": 10.64
+      "audioDurationSec": 10.692
     },
     {
       "kind": "article",
@@ -44,7 +44,7 @@
         "toY": -0.3761812088638544
       },
       "audio": "assets/2026-W43/audio/seg-01.mp3",
-      "audioDurationSec": 10.4,
+      "audioDurationSec": 10.44,
       "captions": [
         {
           "text": "這是第 1 篇文章的測試旁白",
@@ -54,11 +54,11 @@
         {
           "text": "用來驗證管線的語音時長估算與字幕",
           "from": 113,
-          "duration": 122
+          "duration": 123
         },
         {
           "text": "切分邏輯是否正常運作",
-          "from": 235,
+          "from": 236,
           "duration": 77
         }
       ]
@@ -82,7 +82,7 @@
         "toY": 0.17234070748090746
       },
       "audio": "assets/2026-W43/audio/seg-02.mp3",
-      "audioDurationSec": 10.4,
+      "audioDurationSec": 10.44,
       "captions": [
         {
           "text": "這是第 2 篇文章的測試旁白",
@@ -92,11 +92,11 @@
         {
           "text": "用來驗證管線的語音時長估算與字幕",
           "from": 113,
-          "duration": 122
+          "duration": 123
         },
         {
           "text": "切分邏輯是否正常運作",
-          "from": 235,
+          "from": 236,
           "duration": 77
         }
       ]
@@ -120,7 +120,7 @@
         "toY": 0.29423501297831534
       },
       "audio": "assets/2026-W43/audio/seg-03.mp3",
-      "audioDurationSec": 10.4,
+      "audioDurationSec": 10.44,
       "captions": [
         {
           "text": "這是第 3 篇文章的測試旁白",
@@ -130,11 +130,11 @@
         {
           "text": "用來驗證管線的語音時長估算與字幕",
           "from": 113,
-          "duration": 122
+          "duration": 123
         },
         {
           "text": "切分邏輯是否正常運作",
-          "from": 235,
+          "from": 236,
           "duration": 77
         }
       ]
@@ -150,7 +150,7 @@
       ],
       "site": "mobileai.net",
       "audio": "assets/2026-W43/audio/seg-04-outro.mp3",
-      "audioDurationSec": 7.78
+      "audioDurationSec": 7.848
     }
   ],
   "sfx": [
