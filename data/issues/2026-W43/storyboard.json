@@ -7,7 +7,7 @@
   "fps": 30,
   "width": 1920,
   "height": 1080,
-  "totalFrames": 1944,
+  "totalFrames": 2610,
   "bgm": {
     "src": "bgm/bgm-focus-100.mp3",
     "volume": 0.34,
@@ -18,21 +18,21 @@
     {
       "kind": "intro",
       "from": 0,
-      "duration": 270,
+      "duration": 198,
       "title": "mobileai 週報",
       "dateLabel": "10/18 – 10/25",
       "week": "2026-W43",
       "articleCount": 3,
       "audio": "assets/2026-W43/audio/seg-00-intro.mp3",
-      "audioDurationSec": 7.944
+      "audioDurationSec": 5.328
     },
     {
       "kind": "article",
       "index": 0,
-      "from": 270,
-      "duration": 468,
+      "from": 198,
+      "duration": 648,
       "articleTitle": "讓 Android 車機、平板變 Android Auto  導航螢幕！DiAuto 免 Root APK 下載安裝與連線教學",
-      "headline": "DiAuto 免Root導航",
+      "headline": "DiAuto 導航連線教學",
       "tag": "APP 教學",
       "link": "https://mobileai.net/2026/10/21/diauto/",
       "image": "assets/2026-W43/img/img-01.jpg",
@@ -45,58 +45,73 @@
         "toY": -0.3761812088638544
       },
       "audio": "assets/2026-W43/audio/seg-01.mp3",
-      "audioDurationSec": 13.968,
+      "audioDurationSec": 20.424,
       "captions": [
         {
-          "text": "DiAuto 免 Root",
+          "text": "Android 車機與平板想變成",
           "from": 6,
-          "duration": 62
+          "duration": 78
         },
         {
-          "text": "讓 Android 車機與平板化",
-          "from": 68,
-          "duration": 77
+          "text": " Android Auto 導航",
+          "from": 84,
+          "duration": 78
         },
         {
-          "text": "身 Android Auto 導",
-          "from": 145,
-          "duration": 77
+          "text": "機",
+          "from": 162,
+          "duration": 8
         },
         {
-          "text": "航螢幕",
-          "from": 222,
-          "duration": 14
+          "text": "不一定要 Root",
+          "from": 170,
+          "duration": 44
         },
         {
-          "text": "本文拆解 APK 安裝",
-          "from": 236,
-          "duration": 53
+          "text": "安裝 DiAuto 後",
+          "from": 214,
+          "duration": 54
         },
         {
-          "text": "權限設定與連線流程",
-          "from": 289,
-          "duration": 43
+          "text": "依序設定簡體中文",
+          "from": 268,
+          "duration": 39
         },
         {
-          "text": "也要留意部分機型目前只能使用 U",
-          "from": 332,
-          "duration": 77
+          "text": "同意權限並完成初始化",
+          "from": 307,
+          "duration": 49
         },
         {
-          "text": "SB",
-          "from": 409,
-          "duration": 10
+          "text": "再以 USB 連接裝置即可啟動",
+          "from": 356,
+          "duration": 73
+        },
+        {
+          "text": "本文也整理開機自動連線",
+          "from": 429,
+          "duration": 54
+        },
+        {
+          "text": "Wi-Fi 相容性與 Andro",
+          "from": 483,
+          "duration": 78
+        },
+        {
+          "text": "id 13 以上等重點",
+          "from": 561,
+          "duration": 52
         }
       ]
     },
     {
       "kind": "article",
       "index": 1,
-      "from": 738,
-      "duration": 486,
+      "from": 846,
+      "duration": 774,
       "articleTitle": "讓電視也能看紅果短劇！『紅果 TV』第三方 APK 下載與安裝教學，Android TV、Google TV、小米、安博、小雲盒子皆適用",
-      "headline": "紅果TV進電視",
-      "tag": "追劇APP",
+      "headline": "紅果 TV 追劇安裝教學",
+      "tag": "追劇教學",
       "link": "https://mobileai.net/2026/10/23/hongguo-tv-apk/",
       "image": "assets/2026-W43/img/img-02.jpg",
       "kenburns": {
@@ -108,58 +123,83 @@
         "toY": 0.17234070748090746
       },
       "audio": "assets/2026-W43/audio/seg-02.mp3",
-      "audioDurationSec": 14.712,
+      "audioDurationSec": 24.408,
       "captions": [
         {
-          "text": "紅果 TV 是第三方 APK",
+          "text": "手機能看紅果短劇",
           "from": 6,
-          "duration": 74
+          "duration": 50
         },
         {
-          "text": "可讓 Android TV",
-          "from": 80,
-          "duration": 69
+          "text": "電視卻沒有官方 Android ",
+          "from": 56,
+          "duration": 100
         },
         {
-          "text": "Google TV 與電視盒追短",
-          "from": 149,
-          "duration": 85
+          "text": "TV 版",
+          "from": 156,
+          "duration": 25
         },
         {
-          "text": "劇",
-          "from": 234,
-          "duration": 8
+          "text": "第三方紅果 TV 可先在電腦與電",
+          "from": 181,
+          "duration": 100
         },
         {
-          "text": "本文示範用 LocalSend ",
-          "from": 242,
-          "duration": 85
+          "text": "視安裝 LocalSend",
+          "from": 281,
+          "duration": 81
         },
         {
-          "text": "傳檔安裝",
-          "from": 327,
-          "duration": 21
+          "text": "把 APK 從電腦傳到電視",
+          "from": 362,
+          "duration": 81
         },
         {
-          "text": "也提醒版本維護",
-          "from": 348,
-          "duration": 37
+          "text": "再允許安裝與授權",
+          "from": 443,
+          "duration": 50
         },
         {
-          "text": "登入風險與花屏排除方式",
-          "from": 385,
+          "text": "支援熱播",
+          "from": 493,
+          "duration": 25
+        },
+        {
+          "text": "分類",
+          "from": 518,
+          "duration": 13
+        },
+        {
+          "text": "榜單和彈幕",
+          "from": 531,
+          "duration": 31
+        },
+        {
+          "text": "若花屏或影音不同步",
+          "from": 562,
           "duration": 56
+        },
+        {
+          "text": "可改用軟體解碼",
+          "from": 618,
+          "duration": 44
+        },
+        {
+          "text": "但登入主帳號可能遭限制",
+          "from": 662,
+          "duration": 69
         }
       ]
     },
     {
       "kind": "article",
       "index": 2,
-      "from": 1224,
-      "duration": 504,
+      "from": 1620,
+      "duration": 774,
       "articleTitle": "受夠智慧電視滿版廣告又卡頓嗎？CleanYourTV 手機版 APK 實測教學：免電腦、免 Root、免訂閱 AI，一鍵把 Android TV 變成極簡 Apple TV 風格！",
-      "headline": "CleanYourTV去廣告",
-      "tag": "電視優化",
+      "headline": "CleanYourTV 實測",
+      "tag": "APP 實測",
       "link": "https://mobileai.net/2026/10/24/cleanyourtv/",
       "image": "assets/2026-W43/img/img-03.jpg",
       "kenburns": {
@@ -171,67 +211,87 @@
         "toY": 0.29423501297831534
       },
       "audio": "assets/2026-W43/audio/seg-03.mp3",
-      "audioDurationSec": 15.84,
+      "audioDurationSec": 24.528,
       "captions": [
         {
-          "text": "CleanYourTV 手機版 ",
+          "text": "智慧電視廣告多又卡頓",
           "from": 6,
-          "duration": 89
+          "duration": 59
         },
         {
-          "text": "APK 不需訂閱 AI",
-          "from": 95,
-          "duration": 61
+          "text": "用手機版 CleanYourTV",
+          "from": 65,
+          "duration": 95
         },
         {
-          "text": "就能協助 Android TV ",
-          "from": 156,
-          "duration": 89
+          "text": "免電腦",
+          "from": 160,
+          "duration": 18
         },
         {
-          "text": "移除廣告與多餘程式",
-          "from": 245,
-          "duration": 50
+          "text": "免 Root",
+          "from": 178,
+          "duration": 36
         },
         {
-          "text": "打造極簡桌面",
-          "from": 295,
-          "duration": 34
+          "text": "也不必訂閱 AI",
+          "from": 214,
+          "duration": 47
         },
         {
-          "text": "本文示範 USB 偵錯",
-          "from": 329,
-          "duration": 61
+          "text": "就能替 Android TV 重",
+          "from": 261,
+          "duration": 95
         },
         {
-          "text": "同網連線及優化流程",
-          "from": 390,
-          "duration": 50
+          "text": "新整理",
+          "from": 356,
+          "duration": 18
         },
         {
-          "text": "並提醒三星",
-          "from": 440,
-          "duration": 27
+          "text": "先開啟電視的開發人員選項與 US",
+          "from": 374,
+          "duration": 95
         },
         {
-          "text": "L",
-          "from": 467,
-          "duration": 8
+          "text": "B 偵錯",
+          "from": 469,
+          "duration": 24
+        },
+        {
+          "text": "再讓手機",
+          "from": 493,
+          "duration": 24
+        },
+        {
+          "text": "電視使用同一 Wi-Fi",
+          "from": 517,
+          "duration": 71
+        },
+        {
+          "text": "連線授權後偵測項目並一鍵優化",
+          "from": 588,
+          "duration": 83
+        },
+        {
+          "text": "重開機即可換成極簡桌面",
+          "from": 671,
+          "duration": 65
         }
       ]
     },
     {
       "kind": "outro",
-      "from": 1728,
+      "from": 2394,
       "duration": 216,
       "headlines": [
-        "DiAuto 免Root導航",
-        "紅果TV進電視",
-        "CleanYourTV去廣告"
+        "DiAuto 導航連線教學",
+        "紅果 TV 追劇安裝教學",
+        "CleanYourTV 實測"
       ],
       "site": "mobileai.net",
       "audio": "assets/2026-W43/audio/seg-04-outro.mp3",
-      "audioDurationSec": 6.144
+      "audioDurationSec": 5.424
     }
   ],
   "sfx": [
@@ -242,27 +302,27 @@
     },
     {
       "name": "whoosh",
-      "atFrame": 270,
+      "atFrame": 198,
       "volume": 0.4
     },
     {
       "name": "whoosh",
-      "atFrame": 738,
+      "atFrame": 846,
       "volume": 0.25
     },
     {
       "name": "whoosh",
-      "atFrame": 1224,
+      "atFrame": 1620,
       "volume": 0.4
     },
     {
       "name": "riser",
-      "atFrame": 1683,
+      "atFrame": 2349,
       "volume": 0.2
     },
     {
       "name": "impact",
-      "atFrame": 1728,
+      "atFrame": 2394,
       "volume": 0.4
     }
   ],

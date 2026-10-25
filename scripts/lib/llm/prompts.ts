@@ -5,6 +5,13 @@ import type { ArticleInput, IntroOutroInput } from "./types.ts";
 export const SUMMARY_SYSTEM = `你是台灣科技媒體的影音腳本編輯，為「mobileai 週報」撰寫每篇文章的短影音文案。
 只能輸出 JSON，不得輸出其他文字或 code fence。使用台灣繁體中文。`;
 
+/** 旁白字數依文章數自適應：篇數少講得深、篇數多收緊，控制總片長。 */
+export function narrationLengthRule(articleCount: number): string {
+  if (articleCount <= 3) return "每篇 90 到 130 個字";
+  if (articleCount <= 5) return "每篇 70 到 100 個字";
+  return "每篇 50 到 75 個字";
+}
+
 export function summaryUserPrompt(articles: ArticleInput[]): string {
   const items = articles.map((a, i) => ({
     index: i,
@@ -16,7 +23,7 @@ export function summaryUserPrompt(articles: ArticleInput[]): string {
   return `以下是本週文章（index 為對應鍵）。請為每篇產生：
 
 1. shortHeadline：不超過 14 個字的短標，抓最吸睛的重點，可含產品或技術名稱。
-2. narration：40 到 60 個字的旁白文稿，口語自然但保留專業度，適合朗讀。不要出現「大家好」、網址、標題符號或引號，只要單段文字。
+2. narration：旁白文稿，口語自然但保留專業度，適合朗讀。涵蓋問題背景、解決方案與關鍵特色或步驟重點，把內容說清楚。不要出現「大家好」、網址、引號或條列符號，只要單段文字。字數限制：${narrationLengthRule(articles.length)}（本週共 ${articles.length} 篇）。
 3. tag：不超過 6 個字的分類，例如「APP 教學」「AI 工具」「開箱實測」「生活科技」。
 
 輸出格式：

@@ -35,7 +35,7 @@ npm test                      # 單元測試（node --test）
 | 階段 | 腳本 | 說明 |
 | --- | --- | --- |
 | 1 | `scripts/fetch-feed.mjs` | 抓 feed → 過濾 `pubDate ≥ 執行日−7天` → **WordPress REST API（`wp-json/wp/v2/posts` + `_embed`）取全文、特色圖與分類**；API 不可用時退回頁面抓版（og:image＋內文），再退回 excerpt。HTTP 走 curl 通過 Cloudflare |
-| 2 | `scripts/summarize.mjs` | LLM adapter：每篇短標（≤14 字）、旁白（40–60 字）、分類；另產開場/結尾詞。passthrough 模式從全文以**句界切分**（完整句 20–110 字，頓號不切）產生口白，不硬截斷 |
+| 2 | `scripts/summarize.mjs` | LLM adapter：每篇短標（≤14 字）、旁白（字數隨文章數自適應：≤3 篇 90–130 字、4–5 篇 70–100、≥6 篇 50–75）、分類；另產開場/結尾詞。passthrough 模式從全文以**句界切分**（完整句 20–110 字，頓號不切）產生口白，不硬截斷 |
 | 3 | `scripts/tts.mjs` | TTS adapter：合成 intro/各段/outro 旁白，ffprobe 量精確時長 |
 | 4+5 | `scripts/storyboard.mjs` | 段落時長＝語音+緩衝 → 吸附 BGM 節拍；組字幕 cue、KenBurns 運鏡、SFX 釘選 |
 | 6 | `scripts/render.mjs` | Remotion 渲染 h264 MP4（音軌＝BGM 0.34 + 旁白 + SFX） |

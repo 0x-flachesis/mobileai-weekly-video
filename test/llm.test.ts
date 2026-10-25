@@ -66,6 +66,16 @@ test("MockLLM：固定輸出且照順序", async () => {
   assert.ok(copies[1].shortHeadline.includes("2"));
 });
 
+test("narrationLengthRule：旁白長度隨文章數自適應", async () => {
+  const { narrationLengthRule } = await import("../scripts/lib/llm/prompts.ts");
+  assert.match(narrationLengthRule(2), /90 到 130/);
+  assert.match(narrationLengthRule(3), /90 到 130/);
+  assert.match(narrationLengthRule(4), /70 到 100/);
+  assert.match(narrationLengthRule(5), /70 到 100/);
+  assert.match(narrationLengthRule(6), /50 到 75/);
+  assert.match(narrationLengthRule(9), /50 到 75/);
+});
+
 test("OpenAICompatibleLLM：請求形狀 + fence 解析 + 修正重試", async () => {
   const calls = [];
   const originalFetch = globalThis.fetch;

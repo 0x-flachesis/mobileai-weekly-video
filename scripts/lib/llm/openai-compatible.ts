@@ -111,7 +111,7 @@ export class OpenAICompatibleLLM implements LLMProvider {
       }
       return {
         shortHeadline: truncateCJK(item.shortHeadline.trim(), 16),
-        narration: item.narration.trim().slice(0, 90),
+        narration: item.narration.trim().slice(0, 150),
         tag: truncateCJK((item.tag ?? "科技").trim(), 8),
       };
     });
