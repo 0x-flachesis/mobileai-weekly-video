@@ -31,7 +31,7 @@ function makeProvider() {
   });
 }
 
-test("MinimaxTTS：hex 音訊寫檔 + 時長交叉檢查", async () => {
+test("MinimaxTTS：hex 音訊寫檔 + 時長交叉檢查 + 繁轉簡", async () => {
   const tiny = await makeTinyMp3();
   const originalFetch = globalThis.fetch;
   let capturedUrl = "";
@@ -52,9 +52,14 @@ test("MinimaxTTS：hex 音訊寫檔 + 時長交叉檢查", async () => {
   };
   try {
     const out = join(tiny.path, "..", "out.mp3");
-    const result = await makeProvider().synthesize("測試旁白", { outfile: out });
+    const result = await makeProvider().synthesize(
+      "智慧電視卡頓，軟體、螢幕都要更新，這款工具一鍵清除廣告。",
+      { outfile: out },
+    );
     assert.equal(capturedUrl, "https://api.minimax.cn/v1/t2a_v2");
     assert.equal(capturedAuth, "Bearer test-key");
+    // 繁體（台灣用語）→ 簡體（含詞彙：軟體→软件、螢幕→屏幕）
+    assert.equal(capturedBody.text, "智能电视卡顿，软件、屏幕都要更新，这款工具一键清除广告。");
     // 請求體形狀（依官方 t2a_v2 規格）
     assert.equal(capturedBody.model, "speech-2.8-hd");
     assert.equal(capturedBody.stream, false);

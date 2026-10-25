@@ -56,7 +56,7 @@ scripts/lib/
 │   └── mock.ts               # 固定輸出（測試/dry-run）
 └── tts/               # TTSProvider
     ├── edge-tts.ts           # 免費（Microsoft 線上語音，走 Python edge-tts CLI）
-    ├── minimax.ts            # MiniMax T2A v2（hex 音訊、限流退避、時長交叉檢查）
+    ├── minimax.ts            # MiniMax T2A v2（送出前自動繁→簡（台灣用語→大陸詞彙）、hex 音訊、限流退避、時長交叉檢查）
     ├── openai-compatible.ts  # /audio/speech 端點
     └── mock.ts               # 靜音 MP3（dry-run 不需網路）
 ```

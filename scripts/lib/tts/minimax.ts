@@ -15,6 +15,24 @@ interface MinimaxResponse {
 /** 限流 / 逾時類錯誤碼，可重試。 */
 const RETRYABLE_CODES = new Set([1001, 1002, 1039]);
 
+let tradToCnConverter: ((s: string) => string) | null = null;
+
+/**
+ * 繁體（台灣，含詞彙）→ 簡體轉換。MiniMax 語音以簡體詞彙為準
+ * （軟體→软件、螢幕→屏幕），配大陸語音時讀音才正確。
+ */
+async function toSimplifiedChinese(text: string): Promise<string> {
+  if (!tradToCnConverter) {
+    const mod = (await import("opencc-js")) as unknown as Record<string, unknown>;
+    const OpenCC = (mod.Converter ?? (mod.default as Record<string, unknown> | undefined)?.Converter) as
+      | ((opts: { from: string; to: string }) => (s: string) => string)
+      | undefined;
+    if (!OpenCC) throw new ProviderError("[tts:minimax] 無法載入 opencc-js 模組");
+    tradToCnConverter = OpenCC({ from: "twp", to: "cn" });
+  }
+  return tradToCnConverter(text);
+}
+
 /** MiniMax T2A v2（POST /v1/t2a_v2，hex 音訊回傳）。 */
 export class MinimaxTTS implements TTSProvider {
   readonly name = "minimax";
@@ -28,6 +46,7 @@ export class MinimaxTTS implements TTSProvider {
     await mkdir(dirname(opts.outfile), { recursive: true });
     const url = `${this.cfg.baseUrl}/v1/t2a_v2`;
     const speed = opts.speed ?? this.cfg.speed;
+    const ttsText = await toSimplifiedChinese(text);
 
     const json = await withRetry(
       async () => {
@@ -41,7 +60,7 @@ export class MinimaxTTS implements TTSProvider {
             },
             body: JSON.stringify({
               model: this.cfg.model,
-              text,
+              text: ttsText,
               stream: false,
               voice_setting: {
                 voice_id: opts.voice ?? this.cfg.voice,
