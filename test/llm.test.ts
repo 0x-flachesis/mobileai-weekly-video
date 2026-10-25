@@ -111,6 +111,58 @@ test("OpenAICompatibleLLM：請求形狀 + fence 解析 + 修正重試", async (
   }
 });
 
+test("OpenAICompatibleLLM：單一 model 保持 model 欄位", async () => {
+  const calls = [];
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = async (_url, init) => {
+    calls.push(JSON.parse(String(init.body)));
+    return chatResponse('{"intro":"a","outro":"b"}');
+  };
+  try {
+    const llm = new OpenAICompatibleLLM({
+      provider: "openai-compatible",
+      baseUrl: "https://openrouter.ai/api/v1",
+      apiKey: "k",
+      model: "google/gemma-4-31b-it:free",
+      temperature: 0.4,
+    });
+    await llm.generateIntroOutro({ week: "2026-W43", dateLabel: "10/18 – 10/24", articleTitles: ["t"] });
+    assert.equal(calls[0].model, "google/gemma-4-31b-it:free");
+    assert.equal(calls[0].models, undefined);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
+test("OpenAICompatibleLLM：逗號分隔 → OpenRouter models fallback 陣列", async () => {
+  const calls = [];
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = async (_url, init) => {
+    calls.push(JSON.parse(String(init.body)));
+    return chatResponse('{"intro":"a","outro":"b"}');
+  };
+  try {
+    const llm = new OpenAICompatibleLLM({
+      provider: "openai-compatible",
+      baseUrl: "https://openrouter.ai/api/v1",
+      apiKey: "k",
+      model: "nvidia/nemotron-3-super-120b-a12b:free, google/gemma-4-31b-it:free,google/gemma-4-26b-a4b-it:free",
+      temperature: 0.4,
+    });
+    await llm.generateIntroOutro({ week: "2026-W43", dateLabel: "10/18 – 10/24", articleTitles: ["t"] });
+    // 送出 models 陣列（依序 fallback），不送單一 model
+    assert.deepEqual(calls[0].models, [
+      "nvidia/nemotron-3-super-120b-a12b:free",
+      "google/gemma-4-31b-it:free",
+      "google/gemma-4-26b-a4b-it:free",
+    ]);
+    assert.equal(calls[0].model, undefined);
+    assert.equal(calls[0].response_format.type, "json_object");
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
 test("OpenAICompatibleLLM：數量不符 → 丟 ProviderError", async () => {
   const originalFetch = globalThis.fetch;
   globalThis.fetch = async () => chatResponse('{"articles":[]}');

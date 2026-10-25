@@ -23,6 +23,25 @@ export class OpenAICompatibleLLM implements LLMProvider {
     this.cfg = cfg;
   }
 
+  /**
+   * LLM_MODEL 支援逗號分隔的多模型清單（OpenRouter 用）：
+   * 傳 2 個以上時改送 `models` 陣列，由 OpenRouter 依序 fallback
+   * （例如免費模型限流時自動切下一個）。
+   */
+  private requestBody(messages: ChatMessage[]): Record<string, unknown> {
+    const models = this.cfg.model
+      .split(",")
+      .map((m) => m.trim())
+      .filter(Boolean);
+    const modelSpec = models.length > 1 ? { models } : { model: this.cfg.model };
+    return {
+      ...modelSpec,
+      temperature: this.cfg.temperature,
+      messages,
+      response_format: { type: "json_object" },
+    };
+  }
+
   private async chat(messages: ChatMessage[]): Promise<string> {
     const url = `${this.cfg.baseUrl}/chat/completions`;
     return withRetry(
@@ -33,12 +52,7 @@ export class OpenAICompatibleLLM implements LLMProvider {
             "Content-Type": "application/json",
             Authorization: `Bearer ${this.cfg.apiKey}`,
           },
-          body: JSON.stringify({
-            model: this.cfg.model,
-            temperature: this.cfg.temperature,
-            messages,
-            response_format: { type: "json_object" },
-          }),
+          body: JSON.stringify(this.requestBody(messages)),
           signal: AbortSignal.timeout(90_000),
         });
         if (!res.ok) {
@@ -50,10 +64,15 @@ export class OpenAICompatibleLLM implements LLMProvider {
           );
         }
         const json = (await res.json()) as {
+          model?: string;
           choices?: { message?: { content?: string } }[];
         };
         const content = json.choices?.[0]?.message?.content;
         if (!content) throw new ProviderError("LLM 回應缺少 choices[0].message.content", { retryable: true });
+        // OpenRouter models 陣列路由時，記錄實際使用的模型
+        if (json.model && json.model !== this.cfg.model) {
+          console.log(`[llm:${this.name}] 路由到模型 ${json.model}`);
+        }
         return content;
       },
       {
