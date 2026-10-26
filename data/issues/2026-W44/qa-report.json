@@ -1,0 +1,63 @@
+{
+  "week": "2026-W44",
+  "video": "output/weekly-2026-W44.mp4",
+  "durationSec": 85.013,
+  "fps": 30,
+  "checks": [
+    {
+      "name": "video-exists",
+      "pass": true,
+      "detail": "h264 1920x1080"
+    },
+    {
+      "name": "resolution",
+      "pass": true,
+      "detail": "1920x1080"
+    },
+    {
+      "name": "codec-h264",
+      "pass": true,
+      "detail": "h264"
+    },
+    {
+      "name": "fps-30",
+      "pass": true,
+      "detail": "30.00fps"
+    },
+    {
+      "name": "has-audio",
+      "pass": true,
+      "detail": "aac"
+    },
+    {
+      "name": "duration-min",
+      "pass": true,
+      "detail": "85.0s"
+    },
+    {
+      "name": "duration-max",
+      "pass": true,
+      "detail": "85.0s"
+    },
+    {
+      "name": "duration-matches-storyboard",
+      "pass": true,
+      "detail": "mp4 85.0s vs storyboard 85.0s"
+    }
+  ],
+  "failedCount": 0,
+  "qaFrames": [
+    "out/qa/2026-W44/frame-00-0045.png",
+    "out/qa/2026-W44/frame-00-0157.png",
+    "out/qa/2026-W44/frame-01-0312.png",
+    "out/qa/2026-W44/frame-01-0529.png",
+    "out/qa/2026-W44/frame-02-0777.png",
+    "out/qa/2026-W44/frame-02-1069.png",
+    "out/qa/2026-W44/frame-03-1350.png",
+    "out/qa/2026-W44/frame-03-1612.png",
+    "out/qa/2026-W44/frame-04-1887.png",
+    "out/qa/2026-W44/frame-04-2179.png",
+    "out/qa/2026-W44/frame-05-2394.png",
+    "out/qa/2026-W44/frame-05-2491.png"
+  ]
+}

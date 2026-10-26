@@ -2,14 +2,20 @@
   "processedGuids": [
     "https://mobileai.net/?p=123128",
     "https://mobileai.net/?p=123141",
-    "https://mobileai.net/?p=123156"
+    "https://mobileai.net/?p=123156",
+    "https://mobileai.net/?p=123176"
   ],
-  "updatedAt": "2026-10-25T11:24:52.531Z",
+  "updatedAt": "2026-10-26T05:49:35.713Z",
   "weeks": [
     {
       "week": "2026-W43",
       "articles": 3,
       "video": "output/weekly-2026-W43.mp4"
+    },
+    {
+      "week": "2026-W44",
+      "articles": 4,
+      "video": "output/weekly-2026-W44.mp4"
     }
   ]
 }

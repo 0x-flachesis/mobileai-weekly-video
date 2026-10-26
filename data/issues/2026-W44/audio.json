@@ -1,0 +1,42 @@
+{
+  "week": "2026-W44",
+  "provider": "edge",
+  "items": [
+    {
+      "key": "intro",
+      "text": "mobileai 週報來囉！本週車機、電視與短劇教學一次看",
+      "audio": "assets/2026-W44/audio/seg-00-intro.mp3",
+      "durationSec": 6.408
+    },
+    {
+      "key": "article-0",
+      "text": "許多車機平板想用Android Auto卻需Root，DiAuto免解鎖即可安裝，支援Android13以上，設定語言授權權限後以USB連線即可啟用導航。",
+      "audio": "assets/2026-W44/audio/seg-01.mp3",
+      "durationSec": 12.744
+    },
+    {
+      "key": "article-1",
+      "text": "紅果短劇僅有手機版，官方未推出TV端，第三方紅果TV讓Android TV、Google TV等裝置也能追劇，透過LocalSend傳輸APK、允許安裝並可切換軟解碼解決花屏，介面支援分類榜單彈幕與倍速播放。",
+      "audio": "assets/2026-W44/audio/seg-02.mp3",
+      "durationSec": 18.336
+    },
+    {
+      "key": "article-2",
+      "text": "智慧電視廣告多且卡頓，CleanYourTV手機版免Root免電腦免訂閱AI，開啟電視USB偵錯後同網段連線，一鍵掃描關閉14項冗餘服務，重開機即呈現極簡AppleTV風格桌面。",
+      "audio": "assets/2026-W44/audio/seg-03.mp3",
+      "durationSec": 16.32
+    },
+    {
+      "key": "article-3",
+      "text": "紅果短劇原僅限手機與電視，玩家自製跨平台版支援Windows、Mac、Linux、LGTV及AndroidTV，安裝後可於設定切換繁體中文，提供搜尋榜單新劇倍速與彈幕功能，惟非官方建議勿登入帳號。",
+      "audio": "assets/2026-W44/audio/seg-04.mp3",
+      "durationSec": 18.288
+    },
+    {
+      "key": "outro",
+      "text": "完整教學請上 mobileai.net，別忘了訂閱每週更新！",
+      "audio": "assets/2026-W44/audio/seg-05-outro.mp3",
+      "durationSec": 4.944
+    }
+  ]
+}

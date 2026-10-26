@@ -1,0 +1,324 @@
+{
+  "schemaVersion": 2,
+  "week": "2026-W44",
+  "dateISO": "2026-10-26",
+  "dateLabel": "10/19 – 10/26",
+  "title": "mobileai 週報 2026-W44",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "totalFrames": 2550,
+  "bgm": {
+    "src": "bgm/bgm-pulse-120.mp3",
+    "volume": 0.34,
+    "bpm": 120,
+    "fadeOutFrames": 60
+  },
+  "segments": [
+    {
+      "kind": "intro",
+      "from": 0,
+      "duration": 225,
+      "title": "mobileai 週報",
+      "dateLabel": "10/19 – 10/26",
+      "week": "2026-W44",
+      "articleCount": 4,
+      "audio": "assets/2026-W44/audio/seg-00-intro.mp3",
+      "audioDurationSec": 6.408
+    },
+    {
+      "kind": "article",
+      "index": 0,
+      "from": 225,
+      "duration": 435,
+      "articleTitle": "讓 Android 車機、平板變 Android Auto  導航螢幕！DiAuto 免 Root APK 下載安裝與連線教學",
+      "headline": "DiAuto免解鎖變導航",
+      "tag": "APP教學",
+      "link": "https://mobileai.net/2026/10/21/diauto/",
+      "image": "assets/2026-W44/img/img-01.jpg",
+      "kenburns": {
+        "fromScale": 1.140993965594098,
+        "toScale": 1.0557774360408076,
+        "fromX": 0,
+        "fromY": 0,
+        "toX": 0,
+        "toY": 0
+      },
+      "audio": "assets/2026-W44/audio/seg-01.mp3",
+      "audioDurationSec": 12.744,
+      "captions": [
+        {
+          "text": "許多車機平板想用Android ",
+          "from": 6,
+          "duration": 82
+        },
+        {
+          "text": "Auto卻需Root",
+          "from": 88,
+          "duration": 52
+        },
+        {
+          "text": "DiAuto免解鎖即可安裝",
+          "from": 140,
+          "duration": 67
+        },
+        {
+          "text": "支援Android13以上",
+          "from": 207,
+          "duration": 67
+        },
+        {
+          "text": "設定語言授權權限後以USB連線即",
+          "from": 274,
+          "duration": 82
+        },
+        {
+          "text": "可啟用導航",
+          "from": 356,
+          "duration": 26
+        }
+      ]
+    },
+    {
+      "kind": "article",
+      "index": 1,
+      "from": 660,
+      "duration": 585,
+      "articleTitle": "讓電視也能看紅果短劇！『紅果 TV』第三方 APK 下載與安裝教學，Android TV、Google TV、小米、安博、小雲盒子皆適用",
+      "headline": "紅果TV讓電視追劇",
+      "tag": "APP教學",
+      "link": "https://mobileai.net/2026/10/23/hongguo-tv-apk/",
+      "image": "assets/2026-W44/img/img-02.jpg",
+      "kenburns": {
+        "fromScale": 1.0580904716672377,
+        "toScale": 1.1598724198248236,
+        "fromX": 0,
+        "fromY": 0,
+        "toX": 0,
+        "toY": 0
+      },
+      "audio": "assets/2026-W44/audio/seg-02.mp3",
+      "audioDurationSec": 18.336,
+      "captions": [
+        {
+          "text": "紅果短劇僅有手機版",
+          "from": 6,
+          "duration": 50
+        },
+        {
+          "text": "官方未推出TV端",
+          "from": 56,
+          "duration": 45
+        },
+        {
+          "text": "第三方紅果TV讓Android ",
+          "from": 101,
+          "duration": 90
+        },
+        {
+          "text": "TV",
+          "from": 191,
+          "duration": 11
+        },
+        {
+          "text": "Google TV等裝置也能追劇",
+          "from": 202,
+          "duration": 90
+        },
+        {
+          "text": "透過LocalSend傳輸APK",
+          "from": 292,
+          "duration": 90
+        },
+        {
+          "text": "允許安裝並可切換軟解碼解決花屏",
+          "from": 382,
+          "duration": 84
+        },
+        {
+          "text": "介面支援分類榜單彈幕與倍速播放",
+          "from": 466,
+          "duration": 84
+        }
+      ]
+    },
+    {
+      "kind": "article",
+      "index": 2,
+      "from": 1245,
+      "duration": 525,
+      "articleTitle": "受夠智慧電視滿版廣告又卡頓嗎？CleanYourTV 手機版 APK 實測教學：免電腦、免 Root、免訂閱 AI，一鍵把 Android TV 變成極簡 Apple TV 風格！",
+      "headline": "CleanYourTV手機版",
+      "tag": "系統優化",
+      "link": "https://mobileai.net/2026/10/24/cleanyourtv/",
+      "image": "assets/2026-W44/img/img-03.jpg",
+      "kenburns": {
+        "fromScale": 1.0442530612717382,
+        "toScale": 1.1527331690769642,
+        "fromX": 0,
+        "fromY": 0,
+        "toX": 0,
+        "toY": 0
+      },
+      "audio": "assets/2026-W44/audio/seg-03.mp3",
+      "audioDurationSec": 16.32,
+      "captions": [
+        {
+          "text": "智慧電視廣告多且卡頓",
+          "from": 6,
+          "duration": 58
+        },
+        {
+          "text": "CleanYourTV手機版免R",
+          "from": 64,
+          "duration": 92
+        },
+        {
+          "text": "oot免電腦免訂閱AI",
+          "from": 156,
+          "duration": 63
+        },
+        {
+          "text": "開啟電視USB偵錯後同網段連線",
+          "from": 219,
+          "duration": 86
+        },
+        {
+          "text": "一鍵掃描關閉14項冗餘服務",
+          "from": 305,
+          "duration": 75
+        },
+        {
+          "text": "重開機即呈現極簡AppleTV風",
+          "from": 380,
+          "duration": 92
+        },
+        {
+          "text": "格桌面",
+          "from": 472,
+          "duration": 17
+        }
+      ]
+    },
+    {
+      "kind": "article",
+      "index": 3,
+      "from": 1770,
+      "duration": 585,
+      "articleTitle": "電腦也能看紅果短劇！支援 Windows、Mac、Linux、LG 與 Android TV 的『紅果短劇』跨平台第三方 APP 下載與繁體中文化教學",
+      "headline": "紅果短劇跨平台播放",
+      "tag": "跨平台",
+      "link": "https://mobileai.net/2026/10/26/hongguo-duanju-pc-mac-tv/",
+      "image": "assets/2026-W44/img/img-04.jpg",
+      "kenburns": {
+        "fromScale": 1.0581677727913483,
+        "toScale": 1.1632621649187058,
+        "fromX": -0.01002513994462788,
+        "fromY": 0.18771946858614685,
+        "toX": -0.19800497177056967,
+        "toY": 0.25296409077942367
+      },
+      "audio": "assets/2026-W44/audio/seg-04.mp3",
+      "audioDurationSec": 18.288,
+      "captions": [
+        {
+          "text": "紅果短劇原僅限手機與電視",
+          "from": 6,
+          "duration": 72
+        },
+        {
+          "text": "玩家自製跨平台版支援Window",
+          "from": 78,
+          "duration": 97
+        },
+        {
+          "text": "s",
+          "from": 175,
+          "duration": 8
+        },
+        {
+          "text": "Mac",
+          "from": 183,
+          "duration": 18
+        },
+        {
+          "text": "Linux",
+          "from": 201,
+          "duration": 30
+        },
+        {
+          "text": "LGTV及AndroidTV",
+          "from": 231,
+          "duration": 84
+        },
+        {
+          "text": "安裝後可於設定切換繁體中文",
+          "from": 315,
+          "duration": 78
+        },
+        {
+          "text": "提供搜尋榜單新劇倍速與彈幕功能",
+          "from": 393,
+          "duration": 91
+        },
+        {
+          "text": "惟非官方建議勿登入帳號",
+          "from": 484,
+          "duration": 65
+        }
+      ]
+    },
+    {
+      "kind": "outro",
+      "from": 2355,
+      "duration": 195,
+      "headlines": [
+        "DiAuto免解鎖變導航",
+        "紅果TV讓電視追劇",
+        "CleanYourTV手機版",
+        "紅果短劇跨平台播放"
+      ],
+      "site": "mobileai.net",
+      "audio": "assets/2026-W44/audio/seg-05-outro.mp3",
+      "audioDurationSec": 4.944
+    }
+  ],
+  "sfx": [
+    {
+      "name": "impact",
+      "atFrame": 18,
+      "volume": 0.5
+    },
+    {
+      "name": "whoosh",
+      "atFrame": 225,
+      "volume": 0.4
+    },
+    {
+      "name": "whoosh",
+      "atFrame": 660,
+      "volume": 0.25
+    },
+    {
+      "name": "whoosh",
+      "atFrame": 1245,
+      "volume": 0.4
+    },
+    {
+      "name": "whoosh",
+      "atFrame": 1770,
+      "volume": 0.25
+    },
+    {
+      "name": "riser",
+      "atFrame": 2310,
+      "volume": 0.2
+    },
+    {
+      "name": "impact",
+      "atFrame": 2355,
+      "volume": 0.4
+    }
+  ],
+  "seed": 2523040405
+}
